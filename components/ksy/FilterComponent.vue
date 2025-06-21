@@ -2,6 +2,20 @@
 function press(element){
   element.target.classList.add('pressed')
 }
+function click(element){
+  if (element.target.classList.contains('select')){
+    element.target.lastElementChild.classList.add('focus')
+  }else if(element.target.tagName === 'P' || element.target.tagName === 'I'){
+    element.target.parentElement.nextElementSibling.classList.add('focus')
+  }
+}
+function click_second(element){
+  if (element.target.classList.contains('select')){
+    element.target.lastElementChild.classList.add('focus_second')
+  }else if(element.target.tagName === 'P' || element.target.tagName === 'I'){
+    element.target.parentElement.nextElementSibling.classList.add('focus_second')
+  }
+}
 </script>
 
 <template>
@@ -16,7 +30,7 @@ function press(element){
       <button @click="press">Спецтехника</button>
       <button @click="press">Комтехника</button>
     </div>
-    <div class="select">
+    <div class="select" @click="click">
       <div class="name">
         <i class="fa-solid fa-chevron-up"></i>
         <p>Продукция</p>
@@ -30,7 +44,7 @@ function press(element){
       </div>
     </div>
     <div class="line"></div>
-    <div class="select">
+    <div class="select" @click="click_second">
       <div class="name">
         <i class="fa-solid fa-chevron-up"></i>
         <p>Коробка передач</p>
@@ -43,7 +57,7 @@ function press(element){
       </div>
     </div>
     <div class="line"></div>
-    <div class="select">
+    <div class="select" @click="click">
       <div class="name">
         <i class="fa-solid fa-chevron-up"></i>
         <p>Двигатель</p>
@@ -74,7 +88,7 @@ function press(element){
       </div>
     </div>
     <div class="line"></div>
-    <div class="select">
+    <div class="select" @click="click">
       <div class="name">
         <i class="fa-solid fa-chevron-up"></i>
         <p>Масса</p>
@@ -178,7 +192,6 @@ input[type="checkbox"]:checked::after{
   transition: 0.5s;
 }
   .select:nth-child(5) .content{
-    display: flex;
     align-items: center;
   }
   .select:nth-child(5) .content label{
@@ -250,5 +263,22 @@ input[type="checkbox"]:checked::after{
     font-size: 16px;
     color: #333333;
     margin-left: 5px;
+  }
+
+  .content{
+    display: none;
+  }
+  .select{
+    position: relative;
+    display: inline-block;
+  }
+  .name:hover{
+    cursor: pointer;
+  }
+  .focus{
+    display: block;
+  }
+  .focus_second{
+    display: flex;
   }
 </style>
