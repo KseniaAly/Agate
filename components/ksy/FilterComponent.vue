@@ -1,0 +1,254 @@
+<script setup>
+function press(element){
+  element.target.classList.add('pressed')
+}
+</script>
+
+<template>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"/>
+
+  <div class="body">
+    <h3>Подобрать технику</h3>
+    <div class="buttons">
+      <button class="pressed" @click="press">Все</button>
+      <button @click="press">Спецтехника</button>
+      <button @click="press">Комтехника</button>
+    </div>
+    <div class="select">
+      <div class="name">
+        <i class="fa-solid fa-chevron-up"></i>
+        <p>Продукция</p>
+      </div>
+      <div class="content scroll">
+        <p>Автобетононасос</p>
+        <p>Автобетоносмеситель</p>
+        <p>фаофлвоыа</p>
+        <p>фаофлвоыа</p>
+        <p>фаофлвоыа</p>
+      </div>
+    </div>
+    <div class="line"></div>
+    <div class="select">
+      <div class="name">
+        <i class="fa-solid fa-chevron-up"></i>
+        <p>Коробка передач</p>
+      </div>
+      <div class="content">
+        <input type="checkbox" id="mkpp">
+        <label for="mkpp">МКПП</label>
+        <input type="checkbox" id="akpp">
+        <label for="akpp">АКПП</label>
+      </div>
+    </div>
+    <div class="line"></div>
+    <div class="select">
+      <div class="name">
+        <i class="fa-solid fa-chevron-up"></i>
+        <p>Двигатель</p>
+      </div>
+      <div class="content">
+        <h5>Мошность, л.с.</h5>
+        <div class="buttons">
+          <button>до 100</button>
+          <button>100-150</button>
+          <button>150-200</button>
+          <button>200+</button>
+        </div>
+        <h5>Тип двигателя</h5>
+        <div class="check">
+          <div class="input">
+            <input type="checkbox" id="petrol">
+            <label for="petrol">Бензиновый</label>
+          </div>
+          <div class="input">
+            <input type="checkbox" id="diesel">
+            <label for="diesel">Дизельный</label>
+          </div>
+          <div class="input">
+            <input type="checkbox" id="gas">
+            <label for="gas">Газовый</label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="line"></div>
+    <div class="select">
+      <div class="name">
+        <i class="fa-solid fa-chevron-up"></i>
+        <p>Масса</p>
+      </div>
+      <div class="content scroll">
+        <p>1 тонна</p>
+        <p>2 тонны</p>
+        <p>3 тонны</p>
+      </div>
+    </div>
+    <div class="line"></div>
+    <p class="link_button">Сбросить параметры фильтра</p>
+  </div>
+</template>
+
+<style scoped>
+*{
+  display: block;
+  font-family: Monserrat;
+}
+h3{
+  color: #333333;
+  font-size: 16px;
+  text-align: center;
+  margin: 0;
+}
+  .body{
+    padding: 30px 17px;
+    border: 4px solid #880003;
+    border-radius: 5px;
+    width: fit-content;
+    height: fit-content;
+  }
+  .name{
+    display: flex;
+    align-items: baseline;
+    margin-bottom: 10px;
+  }
+  .name p{
+    margin: 0;
+    margin-left: 8px;
+    color: #333333;
+  }
+  .name i{
+    color: #D51317;
+  }
+  .buttons{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    margin-top: 15px;
+  }
+  .buttons button{
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    background-color: #FCECEC;
+    font-size: 14px;
+  }
+  .buttons button.pressed{
+    background-color: #1C1919;
+    color: white;
+  }
+  .line{
+    background-color: #DADADA;
+    height: 1px;
+    margin: 15px 0;
+    width: 100%;
+  }
+  .link_button{
+    margin: 0;
+    color: #880003;
+    text-decoration: underline;
+  }
+input[type="checkbox"]{
+  padding: 9px;
+  appearance: none;
+  position: relative;
+  width: 0;
+  height: 0;
+  background: #D51317;
+  border-radius: 5px;
+  transition: 0.5s;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+input[type="checkbox"]::after{
+  content: "";
+  position: absolute;
+  width: 30px;
+  height: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' height='16' viewBox='0 -960 960 960' width='30' stroke='%23FFFFFF' stroke-width='30' fill='%23FFFFFF'%3E%3Cpath d='M382-240 154-468l57-57 171 171 367-367 57 57-424 424Z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  transition: 0.5s;
+}
+input[type="checkbox"]:checked::after{
+  width: 30px;
+  height: 16px;
+  transition: 0.5s;
+}
+  .select:nth-child(5) .content{
+    display: flex;
+    align-items: center;
+  }
+  .select:nth-child(5) .content label{
+    font-size: 14px;
+    margin-left: 5px;
+  }
+  #akpp{
+    margin-left: 70px;
+  }
+  .scroll{
+    border: 1px solid #333333;
+    width: 210px;
+    height: 120px;
+    overflow-y: scroll;
+    padding: 0 15px;
+    border-radius: 5px;
+  }
+  .scroll p{
+    margin: 20px 0;
+    font-size: 16px;
+    color: #1C1919;
+  }
+  .scroll p:hover{
+    cursor: pointer;
+    color: #880003;
+  }
+  .scroll::-webkit-scrollbar {
+    width: 7px;
+    background-color: #F0F0F0;
+    border-radius: 5px;
+  }
+  .scroll::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #D51317, #880003);
+    border-radius: 5px;
+  }
+  h5{
+    margin: 0;
+    font-size: 16px;
+    font-weight: 400;
+    color: #333333;
+  }
+  .content .buttons{
+    width: 210px;
+    flex-wrap: wrap;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  .content .buttons button{
+    width: fit-content;
+    padding: 6px 11px;
+    margin-bottom: 7px;
+    background-color: white;
+    border: 1px solid #DADADA;
+    color: #1C1919;
+  }
+  .content .buttons button:hover{
+    background-color: #D51317;
+    border: 1px solid #D51317;
+    color: white;
+  }
+  .check{
+    margin-top: 10px;
+  }
+  .check .input{
+    display: flex;
+    align-items: center;
+  }
+  .check .input label{
+    font-size: 16px;
+    color: #333333;
+    margin-left: 5px;
+  }
+</style>
