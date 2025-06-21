@@ -1,9 +1,11 @@
 <script>
 import CardCar from "~/components/ann/CardCar.vue";
+import ModalCar from "~/components/ann/ModalCar.vue";
 
 export default {
   components: {
-    CardCar
+    CardCar,
+    ModalCar
   },
   data() {
     return {
@@ -11,6 +13,8 @@ export default {
       itemsPerPage: 6,
       cars: [],
       totalItems: 0,
+      isModalVisible: false,
+      selectedCar: null,
     };
   },
   computed: {
@@ -36,6 +40,19 @@ export default {
     },
     changePage(page) {
       this.currentPage = page;
+    },
+    openModal(car) {
+      this.selectedCar = car;
+      this.isModalVisible = true;
+    },
+    closeModal() {
+      this.isModalVisible = false;
+      this.selectedCar = null;
+    },
+    preventModal(event) {
+      if (event.target.tagName === "BUTTON") {
+        event.stopPropagation();  // Предотвращаем открытие модалки
+      }
     }
   },
   created() {
@@ -47,18 +64,25 @@ export default {
 <template>
   <section class="car">
     <div class="container">
-      <card-car v-for="(car, index) in displayedItems" :key="index" :car="car">
-        <template #h3>{{car.name}}</template>
-        <template #img><img :src="car.image" alt=""></template>
-        <template #left>
-          {{car.gender}} <br>
-          {{car.species}} <br>
-          {{car.gender}} <br>
-          {{car.species}}
-        </template>
-        <template #liz>{{car.house}}</template>
-        <template #hoz>{{car.house}}</template>
+      <card-car
+          v-for="(car, index) in displayedItems"
+          :key="index"
+          :car="car"
+          @click="openModal(car)"
+          @click.stop="preventModal">
+      <template #h3>{{ car.name }}</template>
+      <template #img><img :src="car.image" alt=""></template>
+      <template #left>
+        {{ car.gender }} <br>
+        {{ car.species }} <br>
+      </template>
+      <template #liz>{{ car.house }}</template>
+      <template #hoz>{{ car.house }}</template>
+      <template #button>
+        <button @click.stop>Узнать цену</button>
+      </template>
       </card-car>
+
     </div>
 
 
@@ -73,13 +97,19 @@ export default {
         {{ page }}
       </button>
     </div>
+
+
+    <modal-car
+        :isVisible="isModalVisible"
+        :carSelect="selectedCar"
+        @close="closeModal">
+    </modal-car>
   </section>
 </template>
 
 <style scoped>
 .container {
   display: flex;
-
   flex-wrap: wrap;
   gap: 10px;
   justify-content: center;
@@ -97,19 +127,32 @@ export default {
   border: none;
   cursor: pointer;
 }
-img{
-  height: 170px;
-  width: 100%;
-  border-radius: 10px 10px 0 0;
-  object-fit: cover;
-}
+
 .carousel-btn.active {
   background: #880003;
   color: #fff;
 }
 
+img {
+  height: 170px;
+  width: 100%;
+  border-radius: 10px 10px 0 0;
+  object-fit: cover;
+}
+
 .car {
   display: grid;
   justify-content: center;
+}
+.container button{
+  background: #880003;
+  color: #fff;
+  align-self: end;
+  width: 90%;
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  font-size: 1rem;
+  font-weight: 600;
 }
 </style>

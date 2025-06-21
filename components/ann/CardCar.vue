@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup>
 
 </script>
 
@@ -19,7 +19,7 @@
           <div class="right"><img src="/img/Cart.png" alt=""> <p class="order">Доступна для заказа</p></div>
       </div>
     </div>
-    <button>Узнать цену ></button>
+    <slot name="button"></slot>
   </div>
 </div>
 </template>
@@ -71,17 +71,6 @@ h3{
 }
 .grid:nth-child(2){
   justify-items: end;
-}
-button{
-  background: #880003;
-  color: #fff;
-  align-self: end;
-  width: 90%;
-  padding: 10px;
-  border-radius: 10px;
-  border: none;
-  font-size: 1rem;
-  font-weight: 600;
 }
 .red{
   background: #880003;
