@@ -7,10 +7,10 @@ export default {
   },
   data() {
     return {
-      currentPage: 1, // Текущая страница
-      itemsPerPage: 6, // Количество карточек на страницу
-      characters: [],  // Данные персонажей
-      totalItems: 0,   // Общее количество карточек
+      currentPage: 1,
+      itemsPerPage: 6,
+      cars: [],
+      totalItems: 0,
     };
   },
   computed: {
@@ -20,7 +20,7 @@ export default {
     displayedItems() {
       const start = (this.currentPage - 1) * this.itemsPerPage;
       const end = start + this.itemsPerPage;
-      return this.characters.slice(start, end);
+      return this.cars.slice(start, end);
     }
   },
   methods: {
@@ -28,8 +28,8 @@ export default {
       try {
         const response = await fetch('https://hp-api.onrender.com/api/characters');
         const data = await response.json();
-        this.characters = data; // Сохраняем данные в массив
-        this.totalItems = this.characters.length; // Обновляем количество товаров
+        this.cars = data;
+        this.totalItems = this.cars.length;
       } catch (error) {
         console.error("Ошибка при получении данных:", error);
       }
@@ -39,7 +39,7 @@ export default {
     }
   },
   created() {
-    this.fetchData(); // Загружаем данные при создании компонента
+    this.fetchData();
   }
 }
 </script>
@@ -47,13 +47,21 @@ export default {
 <template>
   <section class="car">
     <div class="container">
-      <!-- Генерация карточек товаров, используя данные из API -->
-      <card-car v-for="(character, index) in displayedItems" :key="index" :character="character">
-        <template #liz>{{ character.name}}</template>
+      <card-car v-for="(car, index) in displayedItems" :key="index" :car="car">
+        <template #h3>{{car.name}}</template>
+        <template #img><img :src="car.image" alt=""></template>
+        <template #left>
+          {{car.gender}} <br>
+          {{car.species}} <br>
+          {{car.gender}} <br>
+          {{car.species}}
+        </template>
+        <template #liz>{{car.house}}</template>
+        <template #hoz>{{car.house}}</template>
       </card-car>
     </div>
 
-    <!-- Карусель с номерами страниц -->
+
     <div class="carousel-nav">
       <button
           v-for="page in totalPages"
@@ -71,7 +79,7 @@ export default {
 <style scoped>
 .container {
   display: flex;
-  max-width: 900px;
+
   flex-wrap: wrap;
   gap: 10px;
   justify-content: center;
@@ -89,7 +97,12 @@ export default {
   border: none;
   cursor: pointer;
 }
-
+img{
+  height: 170px;
+  width: 100%;
+  border-radius: 10px 10px 0 0;
+  object-fit: cover;
+}
 .carousel-btn.active {
   background: #880003;
   color: #fff;

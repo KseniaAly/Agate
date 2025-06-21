@@ -4,23 +4,18 @@
 
 <template>
 <div class="card">
-  <img src="https://avatars.mds.yandex.net/get-altay/1666174/2a0000016df23d129806c6a94fc355370a70/XXL_height" alt="">
+  <slot name="img"></slot>
 
   <div class="card-content">
-    <h3>ГАЗ Промтоварный фургон на базе ГАЗон NEXT</h3>
+    <h3><slot name="h3"></slot></h3>
     <div class="flex">
       <div class="grid">
-        <p class="left">
-          Шасси, 5.9 л / 270 л. с. <br>
-          Задний привод <br>
-          МКПП <br>
-          Дизельный
-        </p>
+        <p class="left"><slot name="left"></slot> </p>
       </div>
 
       <div class="grid">
         <p class="red"><slot name="liz"></slot></p>
-        <p class="gray">1 Хозяин</p>
+        <p class="gray"><slot name="hoz"></slot></p>
           <div class="right"><img src="/img/Cart.png" alt=""> <p class="order">Доступна для заказа</p></div>
       </div>
     </div>
@@ -65,12 +60,7 @@ h3{
   margin-top: 10px;
   margin-bottom: 10px;
 }
-img{
-  height: 170px;
-  width: 100%;
-  border-radius: 10px 10px 0 0;
-  object-fit: cover;
-}
+
 .right img{
   height: 30px;
   width: 40px;
@@ -108,5 +98,8 @@ button{
   font-weight: 500;
   margin-top: 5px;
   margin-bottom: 10px;
+}
+.left{
+  color: #333333;
 }
 </style>
