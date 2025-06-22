@@ -13,6 +13,9 @@ const click = ref(false);
 function press(){
   click.value = true;
 }
+function remove(){
+  click.value = false;
+}
 </script>
 
 <template>
@@ -21,7 +24,7 @@ function press(){
         crossorigin="anonymous" referrerpolicy="no-referrer"/>
 
   <div class="brand" @click="press" :class="{pressed: click}">
-    <i class="fa-solid fa-xmark" v-if="click" @click="click.value=false"></i>
+    <i class="fa-solid fa-xmark" v-if="click" @click.stop @click="remove"></i>
     <img :src="img.src">
   </div>
 </template>
