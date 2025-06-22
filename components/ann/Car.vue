@@ -1,9 +1,11 @@
 <script>
 import CardCar from "~/components/ann/CardCar.vue";
 import ModalCar from "~/components/ann/ModalCar.vue";
+import ModalWindow from "~/components/ksy/ModalWindow.vue";
 
 export default {
   components: {
+    ModalWindow,
     CardCar,
     ModalCar
   },
@@ -15,6 +17,7 @@ export default {
       totalItems: 0,
       isModalVisible: false,
       selectedCar: null,
+      window_open: false,
     };
   },
   computed: {
@@ -53,6 +56,9 @@ export default {
       if (event.target.tagName === "BUTTON") {
         event.stopPropagation();  // Предотвращаем открытие модалки
       }
+    },
+    closeWindow(){
+      this.window_open = false;
     }
   },
   created() {
@@ -79,7 +85,7 @@ export default {
       <template #liz>{{ car.house }}</template>
       <template #hoz>{{ car.house }}</template>
       <template #button>
-        <button @click.stop>Узнать цену</button>
+        <button @click.stop @click="this.window_open=true">Узнать цену</button>
       </template>
       </card-car>
 
@@ -105,6 +111,7 @@ export default {
         @close="closeModal">
     </modal-car>
   </section>
+  <modal-window :open="window_open" @closeWindow="closeWindow"/>
 </template>
 
 <style scoped>

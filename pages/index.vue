@@ -1,5 +1,4 @@
 <script setup>
-import ModalWindow from "~/components/ksy/ModalWindow.vue";
 import FilterComponent from "~/components/ksy/FilterComponent.vue";
 import FilterBrand from "~/components/ksy/FilterBrand.vue";
 import Car from "~/components/ann/Car.vue";

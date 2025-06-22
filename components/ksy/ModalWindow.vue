@@ -1,10 +1,20 @@
 <script setup>
 import ButtonVue from "~/components/ksy/ButtonVue.vue";
+
+defineProps({
+  open:{
+    type: Boolean,
+    required: true
+  }
+})
+function close(){
+  emit('closeWindow', false);
+}
 </script>
 
 <template>
-  <div class="background">
-    <div class="content">
+  <div class="background" v-if="open" @click="close">
+    <div class="content" @click.stop>
       <div class="head">
         <img src="/img/logo.svg">
       </div>
@@ -94,7 +104,7 @@ input:focus::placeholder{
   font-size: 14px;
 }
 .message:focus::placeholder{
-  transform: translateY(-70px);
+  transform: translateY(-55px);
 }
 input[type="checkbox"]{
   padding: 15px;
