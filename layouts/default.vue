@@ -1,13 +1,25 @@
 <script setup>
-
+import HeaderUp from "~/components/mp/HeaderUp.vue";
+import FooterUp from "~/components/mp/FooterUp.vue";
 </script>
 
 <template>
-  <header></header>
+  <header-up/>
   <nuxt-page></nuxt-page>
-  <footer></footer>
+  <footer-up/>
 </template>
 
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600&display=swap');
 
+* {
+  font-family: 'Onest', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.catalog{
+  font-size: 24px;
+}
 </style>
