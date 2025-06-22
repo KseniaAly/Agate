@@ -91,4 +91,10 @@ h3{
 .left{
   color: #333333;
 }
+
+@media (max-width: 480px) {
+.left, .right{
+  display: none;
+}
+}
 </style>
