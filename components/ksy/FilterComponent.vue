@@ -5,15 +5,27 @@ function press(element){
 function click(element){
   if (element.target.classList.contains('select')){
     element.target.lastElementChild.classList.add('focus')
+    element.target.firstElementChild.firstElementChild.classList.add('rotate')
   }else if(element.target.tagName === 'P' || element.target.tagName === 'I'){
     element.target.parentElement.nextElementSibling.classList.add('focus')
+    if(element.target.tagName === 'P'){
+      element.target.previousElementSibling.classList.add('rotate');
+    } else {
+      element.target.classList.add('rotate')
+    }
   }
 }
 function click_second(element){
   if (element.target.classList.contains('select')){
     element.target.lastElementChild.classList.add('focus_second')
+    element.target.firstElementChild.firstElementChild.classList.add('rotate')
   }else if(element.target.tagName === 'P' || element.target.tagName === 'I'){
     element.target.parentElement.nextElementSibling.classList.add('focus_second')
+    if(element.target.tagName === 'P'){
+      element.target.previousElementSibling.classList.add('rotate');
+    } else {
+      element.target.classList.add('rotate')
+    }
   }
 }
 </script>
@@ -280,5 +292,12 @@ input[type="checkbox"]:checked::after{
   }
   .focus_second{
     display: flex;
+  }
+  .select .name i{
+    transform: rotate(180deg);
+    transition: 0.3s;
+  }
+  .rotate{
+    transform: rotate(0) !important;
   }
 </style>
