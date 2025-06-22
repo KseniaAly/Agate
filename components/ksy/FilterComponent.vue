@@ -4,27 +4,55 @@ function press(element){
 }
 function click(element){
   if (element.target.classList.contains('select')){
-    element.target.lastElementChild.classList.add('focus')
-    element.target.firstElementChild.firstElementChild.classList.add('rotate')
-  }else if(element.target.tagName === 'P' || element.target.tagName === 'I'){
-    element.target.parentElement.nextElementSibling.classList.add('focus')
-    if(element.target.tagName === 'P'){
-      element.target.previousElementSibling.classList.add('rotate');
+    if(element.target.lastElementChild.classList.contains('focus')){
+      element.target.lastElementChild.classList.remove('focus')
+      element.target.firstElementChild.firstElementChild.classList.remove('rotate')
     } else {
-      element.target.classList.add('rotate')
+      element.target.lastElementChild.classList.add('focus')
+      element.target.firstElementChild.firstElementChild.classList.add('rotate')
+    }
+  }else if(element.target.tagName === 'P' || element.target.tagName === 'I'){
+    if(element.target.parentElement.nextElementSibling.classList.contains('focus')){
+      element.target.parentElement.nextElementSibling.classList.remove('focus')
+      if(element.target.tagName === 'P'){
+        element.target.previousElementSibling.classList.remove('rotate');
+      } else {
+        element.target.classList.remove('rotate')
+      }
+    } else {
+      element.target.parentElement.nextElementSibling.classList.add('focus')
+      if(element.target.tagName === 'P'){
+        element.target.previousElementSibling.classList.add('rotate');
+      } else {
+        element.target.classList.add('rotate')
+      }
     }
   }
 }
 function click_second(element){
   if (element.target.classList.contains('select')){
-    element.target.lastElementChild.classList.add('focus_second')
-    element.target.firstElementChild.firstElementChild.classList.add('rotate')
-  }else if(element.target.tagName === 'P' || element.target.tagName === 'I'){
-    element.target.parentElement.nextElementSibling.classList.add('focus_second')
-    if(element.target.tagName === 'P'){
-      element.target.previousElementSibling.classList.add('rotate');
+    if(element.target.lastElementChild.classList.contains('focus_second')){
+      element.target.lastElementChild.classList.remove('focus_second')
+      element.target.firstElementChild.firstElementChild.classList.remove('rotate')
     } else {
-      element.target.classList.add('rotate')
+      element.target.lastElementChild.classList.add('focus_second')
+      element.target.firstElementChild.firstElementChild.classList.add('rotate')
+    }
+  }else if(element.target.tagName === 'P' || element.target.tagName === 'I'){
+    if(element.target.parentElement.nextElementSibling.classList.contains('focus_second')){
+      element.target.parentElement.nextElementSibling.classList.remove('focus_second')
+      if(element.target.tagName === 'P'){
+        element.target.previousElementSibling.classList.remove('rotate');
+      } else {
+        element.target.classList.remove('rotate')
+      }
+    }else {
+      element.target.parentElement.nextElementSibling.classList.add('focus_second')
+      if(element.target.tagName === 'P'){
+        element.target.previousElementSibling.classList.add('rotate');
+      } else {
+        element.target.classList.add('rotate')
+      }
     }
   }
 }
