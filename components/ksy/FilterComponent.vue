@@ -1,5 +1,9 @@
 <script setup>
 function press(element){
+  let buttons = document.querySelectorAll(".btn")
+  for (let button of buttons){
+    button.classList.remove('pressed')
+  }
   element.target.classList.add('pressed')
 }
 function click(element){
@@ -66,9 +70,9 @@ function click_second(element){
   <div class="body">
     <h3>Подобрать технику</h3>
     <div class="buttons">
-      <button class="pressed" @click="press">Все</button>
-      <button @click="press">Спецтехника</button>
-      <button @click="press">Комтехника</button>
+      <button class="btn pressed" @click="press">Все</button>
+      <button class="btn" @click="press">Спецтехника</button>
+      <button class="btn" @click="press">Комтехника</button>
     </div>
     <div class="select" @click="click">
       <div class="name">
@@ -148,6 +152,9 @@ function click_second(element){
 *{
   display: block;
   font-family: Monserrat;
+}
+.btn{
+  cursor: pointer;
 }
 h3{
   color: #333333;
