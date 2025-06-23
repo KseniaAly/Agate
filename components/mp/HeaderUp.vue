@@ -280,6 +280,10 @@ const toggleMobileMenu = () => {
   .search {
     width: 150px;
   }
+
+  .header-content {
+    max-width: 720px;
+  }
 }
 
 @media (max-width: 480px) {

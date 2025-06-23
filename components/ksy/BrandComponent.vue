@@ -46,4 +46,28 @@ function remove(){
 .pressed{
   background-color: #FCECEC;
 }
+@media (max-width: 768px) {
+  .brand{
+    display: flex;
+    justify-content: center;
+    width: 120px;
+    height: 100px;
+    padding: 10px 0;
+    margin-right: 5px;
+    box-sizing: border-box;
+  }
+  .brand img{
+    width: 100px;
+  }
+  .fa-xmark{
+    position: absolute;
+    background-color: #880003;
+    color: white;
+    border-radius: 2px;
+    padding: 3px 5px;
+    transform: translateX(45px);
+    margin-top: -5px;
+    font-size: 12px;
+  }
+}
 </style>

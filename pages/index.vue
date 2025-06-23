@@ -8,10 +8,11 @@ import FeedBack from "~/components/mp/FeedBack.vue";
 <template>
   <div class="page">
     <a class="catalog">Каталог коммерческой техники в Нижнем Новгороде</a>
+    <filter-brand class="right"/>
     <div class="block">
       <filter-component/>
       <car></car>
-      <filter-brand/>
+      <filter-brand class="left"/>
     </div>
   </div>
   <feed-back/>
@@ -33,5 +34,32 @@ import FeedBack from "~/components/mp/FeedBack.vue";
 }
 .block{
   display: flex;
+}
+.right{
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .right{
+    display: flex;
+    margin-bottom: 30px;
+  }
+  .left{
+    display: none;
+  }
+  .catalog{
+    font-size: 18px;
+  }
+  .page{
+    max-width: 720px;
+  }
+}
+@media (max-width: 480px) {
+  .right{
+    display: none;
+  }
+  .page{
+    max-width: 90%;
+  }
 }
 </style>

@@ -15,7 +15,7 @@ const brands = ref([
 
 <template>
   <div class="body">
-  <brand-component v-for="(brand) in brands" :img="brand"/>
+    <brand-component v-for="(brand) in brands" :img="brand"/>
   </div>
 </template>
 
@@ -36,5 +36,12 @@ const brands = ref([
     padding-bottom: 0;
     position: relative;
   }
-
+@media (max-width: 768px) {
+  .body{
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+}
 </style>
