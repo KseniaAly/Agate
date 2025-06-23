@@ -1,5 +1,12 @@
 <script setup lang="ts">
-
+const socialLinks = {
+  telegram: 'https://telegram.me/AGAT_bot',
+  whatsapp: 'https://api.whatsapp.com/send?phone=79873901000',
+  viber: '',
+  vk: 'https://vk.com/agattdb',
+  youtube: 'https://www.youtube.com/channel/UC8GYnOpDvozXPVaxupKWxAw?si=9w57O_FNZij0cLvA',
+  yandex: 'https://sso.passport.yandex.ru/push?uuid=cca10011-0297-4a0a-89e9-7ba19b722f8f&retpath=https%3A%2F%2Fdzen.ru%2Fapi%2Fredirect%2Fvk-sso-for-log%3ForiginalUrl%3Dhttps%253A%252F%252Fdzen.ru%252Fagattdb%253Fshare_to%253Dlink%26utm_referrer%3Dagat-technic.ru'
+};
 </script>
 
 <template>
@@ -11,18 +18,18 @@
       <div class="footer-top-content">
         <div class="messengers">
           <h3>Мы в мессенджерах:</h3>
-          <div class="messenger-item">
+          <a :href="socialLinks.telegram" target="_blank" class="messenger-item">
             <img src="/img/telegram.png" alt="Telegram" class="icon">
             <span>Telegram</span>
-          </div>
-          <div class="messenger-item">
+          </a>
+          <a :href="socialLinks.whatsapp" target="_blank" class="messenger-item">
             <img src="/img/whatsapp.png" alt="WhatsApp" class="icon">
             <span>WhatsApp</span>
-          </div>
-          <div class="messenger-item">
+          </a>
+          <a :href="socialLinks.viber" target="_blank" class="messenger-item">
             <img src="/img/viber.png" alt="Viber" class="icon">
             <span>Viber</span>
-          </div>
+          </a>
         </div>
         <div class="logo-contacts">
           <img src="/img/Group.png">
@@ -33,18 +40,18 @@
         </div>
         <div class="socials">
           <h3>Мы в социальных сетях:</h3>
-          <div class="social-item">
+          <a :href="socialLinks.vk" target="_blank" class="social-item">
             <img src="/img/vk.png" alt="VK" class="icon">
             <span>Вконтакте</span>
-          </div>
-          <div class="social-item">
+          </a>
+          <a :href="socialLinks.youtube" target="_blank" class="social-item">
             <img src="/img/youtube.png" alt="YouTube" class="icon">
             <span>YouTube</span>
-          </div>
-          <div class="social-item">
+          </a>
+          <a :href="socialLinks.yandex" target="_blank" class="social-item">
             <img src="/img/yndex.png" alt="Yandex Zen" class="icon">
             <span>Яндекс.Дзен</span>
-          </div>
+          </a>
         </div>
       </div>
     </div>
@@ -61,17 +68,18 @@
 
         <div class="links-block">
           <div>Обратная связь</div>
-          <div>feedback@agatgroup.com</div>
+          <a href="mailto:feedback@agatgroup.com" class="footer-link">feedback@agatgroup.com</a>
         </div>
 
         <div class="links-block">
-          <div>Защита персональных данных</div>
-          <div>Юридическая информация</div>
+          <a href="https://agat-technic.ru/nn/agreement/" class="footer-link">Защита персональных данных</a>
+          <a href="https://agat-technic.ru/upload/files/agreement/bdefc89ef2c6ea697cc5f0d6e280f064.pdf" class="footer-link">Юридическая информация</a>
         </div>
       </div>
     </div>
   </footer>
 </template>
+
 
 <style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600&display=swap');
@@ -194,7 +202,6 @@ h3 {
   flex-wrap: wrap;
   gap: 20px;
   font-weight: normal;
-  text-decoration: underline;
 }
 
 .links-block {
@@ -202,6 +209,37 @@ h3 {
   flex-direction: column;
   gap: 5px;
   font-size: 12px;
+}
+
+.messenger-item,
+.social-item,
+.footer-link {
+  color: white;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.messenger-item:hover,
+.social-item:hover,
+.footer-link:hover {
+  text-decoration: underline;
+}
+
+.messenger-item,
+.social-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.footer-link {
+  text-decoration: underline;
+}
+
+.footer-link:hover {
+  text-decoration: underline;
+  color: #dd424a;
 }
 
 @media (max-width: 768px) {

@@ -317,4 +317,81 @@ const resetForm = () => {
     max-width: 400px;
   }
 }
+
+@media (max-width: 420px) {
+  .feedback-form {
+    padding: 15px;
+  }
+
+  .title {
+    font-size: 20px;
+  }
+
+  .subtitle {
+    font-size: 12px;
+  }
+
+  .input-field {
+    font-size: 14px;
+    padding: 10px 12px;
+    height: 38px;
+  }
+
+  .consent-label {
+    font-size: 12px;
+  }
+
+  .submit-button {
+    height: 38px;
+    font-size: 13px;
+  }
+
+  .input-field{
+    width: 200px;
+  }
+
+  .submit-button[data-v-1e98a10e] {
+    height: 36px;
+    font-size: 12px;
+    width: 90%;
+  }
+
+
+}
+
+@media (max-width: 320px) {
+  .feedback-form {
+    padding: 10px;
+  }
+
+  .title {
+    font-size: 18px;
+  }
+
+  .subtitle {
+    font-size: 11px;
+  }
+
+  .input-field {
+    font-size: 13px;
+    padding: 8px 10px;
+    height: 36px;
+    border-width: 2px;
+  }
+
+  .consent-label {
+    font-size: 11px;
+  }
+
+  .submit-button {
+    height: 36px;
+    font-size: 12px;
+    width: 100%;
+  }
+
+  .form-group,
+  .consent-group {
+    margin-bottom: 20px;
+  }
+}
 </style>

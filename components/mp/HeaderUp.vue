@@ -6,13 +6,13 @@ const searchQuery = ref('');
 const isMobileMenuOpen = ref(false);
 
 const navItems = [
-  'Каталог продукции',
-  'Бренды',
-  'Сервис и запасные части',
-  'Акции',
-  'Услуги',
-  'О компании',
-  'Контакты'
+  { name: 'Каталог продукции', link: '/catalog' },
+  { name: 'Бренды', link: '' },
+  { name: 'Сервис и запасные части', link: 'https://agat-technic.ru/nn/news/' },
+  { name: 'Акции', link: 'https://agat-technic.ru/nn/specials/' },
+  { name: 'Услуги', link: 'https://agat-technic.ru/nn/articles/' },
+  { name: 'О компании', link: 'https://agat-technic.ru/nn/about/' },
+  { name: 'Контакты', link: 'https://agat-technic.ru/nn/contacts/' }
 ];
 
 const setActiveItem = (item: string) => {
@@ -41,7 +41,7 @@ const toggleMobileMenu = () => {
             <img src="/img/icon.png">
             <span>Нижний Новгород</span>
           </div>
-
+        </div>
         <div class="search">
           <input
               v-model="searchQuery"
@@ -54,7 +54,6 @@ const toggleMobileMenu = () => {
             <path d="M14 14L11.1 11.1" stroke="#880003" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
         </div>
-        </div>
         <button class="mobile-menu-toggle" @click="toggleMobileMenu">
           <span></span>
           <span></span>
@@ -66,11 +65,11 @@ const toggleMobileMenu = () => {
         <ul class="nav-list">
           <li
               v-for="item in navItems"
-              :key="item"
-              :class="{ 'active': activeNavItem === item }"
-              @click="setActiveItem(item)"
+              :key="item.name"
+              :class="{ 'active': activeNavItem === item.name }"
+              @click="setActiveItem(item.name)"
           >
-            {{ item }}
+            <a :href="item.link" class="nad">{{ item.name }}</a>
           </li>
         </ul>
       </nav>
@@ -100,13 +99,14 @@ const toggleMobileMenu = () => {
   align-items: center;
   max-width: 1330px;
   margin: 0 auto;
-  padding: 15px 0;
+  padding: 15px 20px;
   gap: 20px;
 }
 
 .logo {
   display: flex;
   flex-direction: column;
+  min-width: 120px;
 }
 
 .contact-info {
@@ -151,14 +151,13 @@ const toggleMobileMenu = () => {
 
 .search {
   position: relative;
-  width: 200px;
-  flex-shrink: 0;
+  width: 300px;
 }
 
 .search-input {
   width: 100%;
   padding: 8px 30px 8px 15px;
-  border: 1px solid #880003;
+  border: 2px solid #880003;
   border-radius: 5px;
   background-color: white;
   color: #1C1919;
@@ -186,7 +185,7 @@ const toggleMobileMenu = () => {
   max-width: 1330px;
   margin: 0 auto;
   border-top: solid 1px #fff;
-  padding: 10px 0;
+  padding: 10px 20px;
 }
 
 .nav-list li {
@@ -224,6 +223,11 @@ const toggleMobileMenu = () => {
   left: 0;
   transform: rotate(0deg);
   transition: .25s ease-in-out;
+}
+
+.nad{
+  color: #FFFFFF;
+  text-decoration: none;
 }
 
 .mobile-menu-toggle span:nth-child(1) {
@@ -270,19 +274,50 @@ const toggleMobileMenu = () => {
   .nav-list li.active {
     background-color: #880003;
   }
+
+  .phone-number {
+    font-size: 12px;
+    font-weight: 500;
+  }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 900px) {
+  .contact-info {
+    gap: 15px;
+  }
+
+  .search {
+    width: 180px;
+  }
+
+  .phone-number {
+    font-size: 12px;
+    font-weight: 500;
+  }
+
+  .contact-info{
+    gap: 5px;
+  }
+}
+
+@media (max-width: 770px) {
+  .header-content {
+    padding: 15px;
+  }
+
   .contact-info {
     display: none;
   }
 
   .search {
-    width: 150px;
+    width: 200px;
+    margin-right: 15px;
   }
+}
 
-  .header-content {
-    max-width: 720px;
+@media (max-width: 600px) {
+  .search {
+    width: 150px;
   }
 }
 
@@ -291,8 +326,13 @@ const toggleMobileMenu = () => {
     padding: 10px 15px;
   }
 
+  .logo {
+    width: 120px;
+  }
+
   .search {
     width: 120px;
+    margin-right: 10px;
   }
 }
 </style>
