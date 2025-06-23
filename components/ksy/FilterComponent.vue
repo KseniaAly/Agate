@@ -356,6 +356,10 @@ input[type="checkbox"]:checked::after{
     display: none;
   }
 
+input[type="checkbox"]{
+  margin-right: 5px;
+}
+
 @media (max-width: 480px) {
   .brand{
     display: block;
@@ -363,9 +367,6 @@ input[type="checkbox"]:checked::after{
   .body{
     position: absolute;
     background-color: white;
-  }
-  input[type="checkbox"]{
-    margin-right: 5px;
   }
 }
 </style>
