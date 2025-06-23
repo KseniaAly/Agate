@@ -36,6 +36,7 @@
   border-radius: 10px;
   width: 400px;
   height: 400px;
+  cursor: pointer;
 }
 .card-content{
   display: grid;

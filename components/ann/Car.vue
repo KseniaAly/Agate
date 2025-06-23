@@ -11,13 +11,13 @@ export default {
   },
   data() {
     return {
-      currentPage: 1,   // Текущая страница
-      itemsPerPage: 6,  // Количество карточек на страницу
-      cars: [],         // Данные персонажей
-      totalItems: 0,    // Общее количество карточек
-      isModalVisible: false, // Флаг для отображения модального окна
-      selectedCar: null,     // Текущий выбранный персонаж для модального окна
-      window_open: false,    // Флаг для открытия окна с ценой
+      currentPage: 1,
+      itemsPerPage: 6,
+      cars: [],
+      totalItems: 0,
+      isModalVisible: false,
+      selectedCar: null,
+      window_open: false,
     };
   },
   computed: {
@@ -63,7 +63,7 @@ export default {
     },
     preventModal(event) {
       if (event.target.tagName === "BUTTON") {
-        event.stopPropagation(); // Останавливаем всплытие события
+        event.stopPropagation();
       }
     },
     closeWindow() {
@@ -94,12 +94,11 @@ export default {
         <template #liz>{{ car.house }}</template>
         <template #hoz>{{ car.house }}</template>
         <template #button>
-          <button @click.stop="window_open = true">Узнать цену</button> <!-- Останавливаем всплытие события для кнопки -->
+          <button @click.stop="window_open = true">Узнать цену</button>
         </template>
       </card-car>
     </div>
 
-    <!-- Кнопки для переключения страниц -->
     <div class="carousel-nav">
       <button
           @click="changePage(currentPage - 1)"
@@ -124,31 +123,35 @@ export default {
           :disabled="currentPage >= totalPages"
           class="carousel-btn"
       >
-        Вперед
+        Вперёд
       </button>
     </div>
 
-    <!-- Модальное окно для подробной информации -->
     <modal-car
         :isVisible="isModalVisible"
         :carSelect="selectedCar"
         @close="closeModal"
     />
 
-    <!-- Модальное окно для "Узнать цену" -->
     <modal-window :open="window_open" @close="closeWindow" />
   </section>
 </template>
 
 <style scoped>
-/* Добавьте стили для контейнера, пагинации и кнопок */
 .container {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
   justify-content: center;
 }
-
+.container button{
+  transition: 0.3s;
+}
+.container button:hover{
+  cursor: pointer;
+  background-color: #9a3c3c;
+  transition: 0.3s;
+}
 .carousel-nav {
   margin-top: 20px;
   text-align: center;
@@ -157,11 +160,15 @@ export default {
 .carousel-btn {
   margin: 0 5px;
   padding: 5px 10px;
-  background: #ddd;
-  border: none;
+  background: #ffffff;
+  border: 1px solid #880003;
   cursor: pointer;
+  margin-bottom: 10px;
+  border-radius: 5px;
 }
-
+.carousel-btn:hover{
+  background: #DADADA;
+}
 .carousel-btn.active {
   background: #880003;
   color: #fff;
