@@ -19,10 +19,6 @@ function remove(){
 </script>
 
 <template>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
-        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"/>
-
   <div class="brand" @click="press" :class="{pressed: click}">
     <i class="fa-solid fa-xmark" v-if="click" @click.stop @click="remove"></i>
     <img :src="img.src">
@@ -30,6 +26,7 @@ function remove(){
 </template>
 
 <style scoped>
+@import "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css";
 .brand{
   display: flex;
   justify-content: center;
