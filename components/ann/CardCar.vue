@@ -34,7 +34,7 @@
 .card{
   border: 1px solid #545454;
   border-radius: 10px;
-  max-width: 400px;
+  width: 400px;
   height: 400px;
 }
 .card-content{
@@ -78,15 +78,17 @@ h3{
   padding: 5px 20px 5px 20px;
   border-radius: 5px;
   font-weight: 500;
+  text-align: center;
 }
 .gray{
   background: #1C1919;
   color: #fff;
-  padding: 6px 15px 6px 15px;
+  padding: 5px 20px 5px 20px;
   border-radius: 5px;
   font-weight: 500;
   margin-top: 5px;
   margin-bottom: 10px;
+  text-align: center;
 }
 .left{
   color: #333333;
@@ -96,5 +98,23 @@ h3{
 .left, .right{
   display: none;
 }
+}
+
+@media (max-width: 400px) {
+  .card{
+    width: 350px;
+  }
+}
+
+@media (max-width: 350px) {
+  .card{
+    width: 300px;
+  }
+}
+
+@media (max-width: 300px) {
+  .card{
+    width: 250px;
+  }
 }
 </style>

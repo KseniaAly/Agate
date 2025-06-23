@@ -11,13 +11,13 @@ export default {
   },
   data() {
     return {
-      currentPage: 1,
-      itemsPerPage: 6,
-      cars: [],
-      totalItems: 0,
-      isModalVisible: false,
-      selectedCar: null,
-      window_open: false,
+      currentPage: 1,   // Текущая страница
+      itemsPerPage: 6,  // Количество карточек на страницу
+      cars: [],         // Данные персонажей
+      totalItems: 0,    // Общее количество карточек
+      isModalVisible: false, // Флаг для отображения модального окна
+      selectedCar: null,     // Текущий выбранный персонаж для модального окна
+      window_open: false,    // Флаг для открытия окна с ценой
     };
   },
   computed: {
@@ -28,6 +28,13 @@ export default {
       const start = (this.currentPage - 1) * this.itemsPerPage;
       const end = start + this.itemsPerPage;
       return this.cars.slice(start, end);
+    },
+    displayedPageNumbers() {
+      const maxVisiblePages = 10;
+      const startPage = Math.floor((this.currentPage - 1) / maxVisiblePages) * maxVisiblePages + 1;
+      const endPage = Math.min(startPage + maxVisiblePages - 1, this.totalPages);
+
+      return Array.from({ length: endPage - startPage + 1 }, (_, i) => startPage + i);
     }
   },
   methods: {
@@ -42,7 +49,9 @@ export default {
       }
     },
     changePage(page) {
-      this.currentPage = page;
+      if (page >= 1 && page <= this.totalPages) {
+        this.currentPage = page;
+      }
     },
     openModal(car) {
       this.selectedCar = car;
@@ -54,10 +63,10 @@ export default {
     },
     preventModal(event) {
       if (event.target.tagName === "BUTTON") {
-        event.stopPropagation();  // Предотвращаем открытие модалки
+        event.stopPropagation(); // Останавливаем всплытие события
       }
     },
-    closeWindow(){
+    closeWindow() {
       this.window_open = false;
     }
   },
@@ -75,26 +84,33 @@ export default {
           :key="index"
           :car="car"
           @click="openModal(car)"
-          @click.stop="preventModal">
-      <template #h3>{{ car.name }}</template>
-      <template #img><img :src="car.image" alt=""></template>
-      <template #left>
-        {{ car.gender }} <br>
-        {{ car.species }} <br>
-      </template>
-      <template #liz>{{ car.house }}</template>
-      <template #hoz>{{ car.house }}</template>
-      <template #button>
-        <button @click.stop @click="this.window_open=true">Узнать цену</button>
-      </template>
+      >
+        <template #h3>{{ car.name }}</template>
+        <template #img><img :src="car.image" alt=""></template>
+        <template #left>
+          {{ car.gender }} <br>
+          {{ car.species }} <br>
+        </template>
+        <template #liz>{{ car.house }}</template>
+        <template #hoz>{{ car.house }}</template>
+        <template #button>
+          <button @click.stop="window_open = true">Узнать цену</button> <!-- Останавливаем всплытие события для кнопки -->
+        </template>
       </card-car>
-
     </div>
 
-
+    <!-- Кнопки для переключения страниц -->
     <div class="carousel-nav">
       <button
-          v-for="page in totalPages"
+          @click="changePage(currentPage - 1)"
+          :disabled="currentPage <= 1"
+          class="carousel-btn"
+      >
+        Назад
+      </button>
+
+      <button
+          v-for="page in displayedPageNumbers"
           :key="page"
           class="carousel-btn"
           @click="changePage(page)"
@@ -102,25 +118,30 @@ export default {
       >
         {{ page }}
       </button>
+
+      <button
+          @click="changePage(currentPage + 1)"
+          :disabled="currentPage >= totalPages"
+          class="carousel-btn"
+      >
+        Вперед
+      </button>
     </div>
 
-
+    <!-- Модальное окно для подробной информации -->
     <modal-car
         :isVisible="isModalVisible"
         :carSelect="selectedCar"
-        @close="closeModal">
-    </modal-car>
+        @close="closeModal"
+    />
+
+    <!-- Модальное окно для "Узнать цену" -->
+    <modal-window :open="window_open" @close="closeWindow" />
   </section>
-  <modal-window :open="window_open" @close="closeWindow"/>
 </template>
 
 <style scoped>
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
-*{
-  margin: 0;
-  padding: 0;
-  font-family: 'Montserrat';
-}
+/* Добавьте стили для контейнера, пагинации и кнопок */
 .container {
   display: flex;
   flex-wrap: wrap;
@@ -146,6 +167,11 @@ export default {
   color: #fff;
 }
 
+.carousel-btn:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
 img {
   height: 170px;
   width: 100%;
@@ -157,7 +183,8 @@ img {
   display: grid;
   justify-content: center;
 }
-.container button{
+
+.container button {
   background: #880003;
   color: #fff;
   align-self: end;
@@ -168,5 +195,4 @@ img {
   font-size: 1rem;
   font-weight: 600;
 }
-
 </style>

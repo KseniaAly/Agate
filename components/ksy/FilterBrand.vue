@@ -36,4 +36,5 @@ const brands = ref([
     padding-bottom: 0;
     position: relative;
   }
+
 </style>

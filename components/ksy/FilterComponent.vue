@@ -336,4 +336,5 @@ input[type="checkbox"]:checked::after{
   .rotate{
     transform: rotate(0) !important;
   }
+
 </style>
