@@ -26,7 +26,7 @@ const brands = ref([
 }
   .body{
     padding: 20px 17px;
-    border: 4px solid #880003;
+    border: 3px solid #880003;
     border-radius: 5px;
     width: fit-content;
     height: fit-content;

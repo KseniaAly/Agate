@@ -70,6 +70,21 @@ function click_second(element){
       <button class="btn" @click="press">Спецтехника</button>
       <button class="btn" @click="press">Комтехника</button>
     </div>
+    <div class="select brand" @click="click">
+      <div class="name">
+        <i class="fa-solid fa-chevron-up"></i>
+        <p>Бренд</p>
+      </div>
+      <div class="content scroll">
+        <p>Kamaz</p>
+        <p>Daewoo Trucks</p>
+        <p>Газ</p>
+        <p>MAZ</p>
+        <p>HINO</p>
+        <p>SHACMAN</p>
+      </div>
+    </div>
+    <div class="line brand"></div>
     <div class="select" @click="click">
       <div class="name">
         <i class="fa-solid fa-chevron-up"></i>
@@ -78,9 +93,9 @@ function click_second(element){
       <div class="content scroll">
         <p>Автобетононасос</p>
         <p>Автобетоносмеситель</p>
-        <p>фаофлвоыа</p>
-        <p>фаофлвоыа</p>
-        <p>фаофлвоыа</p>
+        <p>Прицепная техника</p>
+        <p>Грузовая техника</p>
+        <p>Цельнометаллические автомабили</p>
       </div>
     </div>
     <div class="line"></div>
@@ -162,7 +177,7 @@ h3{
 }
   .body{
     padding: 30px 17px;
-    border: 4px solid #880003;
+    border: 3px solid #880003;
     border-radius: 5px;
     width: fit-content;
     height: fit-content;
@@ -337,4 +352,20 @@ input[type="checkbox"]:checked::after{
     transform: rotate(0) !important;
   }
 
+  .brand{
+    display: none;
+  }
+
+@media (max-width: 480px) {
+  .brand{
+    display: block;
+  }
+  .body{
+    position: absolute;
+    background-color: white;
+  }
+  input[type="checkbox"]{
+    margin-right: 5px;
+  }
+}
 </style>
