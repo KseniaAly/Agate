@@ -111,7 +111,7 @@ export default {
         @close="closeModal">
     </modal-car>
   </section>
-  <modal-window :open="window_open" @closeWindow="closeWindow"/>
+  <modal-window :open="window_open" @close="closeWindow"/>
 </template>
 
 <style scoped>

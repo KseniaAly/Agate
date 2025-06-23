@@ -7,8 +7,10 @@ defineProps({
     required: true
   }
 })
+
+const emit = defineEmits(['close'])
 function close(){
-  emit('closeWindow', false);
+  emit('close', false);
 }
 </script>
 
