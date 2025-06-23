@@ -6,8 +6,8 @@ import FeedBack from "~/components/mp/FeedBack.vue";
 </script>
 
 <template>
-  <a class="catalog">Каталог коммерческой техники в Нижнем Новгороде</a>
   <div class="page">
+    <a class="catalog">Каталог коммерческой техники в Нижнем Новгороде</a>
     <div class="block">
       <filter-component/>
       <car></car>
@@ -23,14 +23,13 @@ import FeedBack from "~/components/mp/FeedBack.vue";
   margin-top: 20px;
   display: block;
   margin-bottom: 20px;
-  margin-left: 75px;
 }
 .page{
   display: block;
   box-sizing: border-box;
   margin: 0 auto;
   overflow-x: hidden;
-  width: 90%;
+  max-width: 1330px;
 }
 .block{
   display: flex;

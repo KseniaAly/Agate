@@ -120,9 +120,8 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
-  max-width: 1200px;
+  max-width: 1330px;
   margin: 0 auto;
-  padding: 0 20px;
 }
 
 .messengers, .socials {
@@ -177,7 +176,7 @@ h3 {
   position: relative;
   padding: 30px 0;
   z-index: 1;
-  max-width: 1200px;
+  max-width: 1330px;
   margin: 0 auto;
   border-top: solid 1px #fff;
 }

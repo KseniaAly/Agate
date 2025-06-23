@@ -98,9 +98,9 @@ const toggleMobileMenu = () => {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  max-width: 1200px;
+  max-width: 1330px;
   margin: 0 auto;
-  padding: 15px 20px;
+  padding: 15px 0;
   gap: 20px;
 }
 
@@ -178,19 +178,15 @@ const toggleMobileMenu = () => {
   pointer-events: none;
 }
 
-.navigation {
-  padding: 10px 0;
-  border-top: solid 1px #fff;
-}
-
 .nav-list {
   display: flex;
   justify-content: space-between;
   list-style: none;
   gap: 20px;
-  max-width: 1200px;
+  max-width: 1330px;
   margin: 0 auto;
-  padding: 0 20px;
+  border-top: solid 1px #fff;
+  padding: 10px 0;
 }
 
 .nav-list li {
