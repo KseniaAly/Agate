@@ -124,7 +124,7 @@ input:focus::placeholder{
   transform: translateY(-55px);
 }
 input[type="checkbox"]{
-  padding: 15px;
+  padding: 10px;
   appearance: none;
   position: relative;
   width: 0;
@@ -141,15 +141,15 @@ input[type="checkbox"]{
 input[type="checkbox"]::after{
   content: "";
   position: absolute;
-  width: 0;
+  width: 30px;
   height: 0;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' height='30' viewBox='0 -960 960 960' width='30' stroke='%23FFFFFF' stroke-width='30' fill='%23FFFFFF'%3E%3Cpath d='M382-240 154-468l57-57 171 171 367-367 57 57-424 424Z'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' height='16' viewBox='0 -960 960 960' width='30' stroke='%23FFFFFF' stroke-width='30' fill='%23FFFFFF'%3E%3Cpath d='M382-240 154-468l57-57 171 171 367-367 57 57-424 424Z'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   transition: 0.5s;
 }
 input[type="checkbox"]:checked::after{
   width: 30px;
-  height: 30px;
+  height: 16px;
   transition: 0.5s;
 }
 .foot{
