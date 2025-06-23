@@ -208,6 +208,9 @@ h3{
     color: #880003;
     text-decoration: underline;
   }
+  .input{
+    margin-bottom: 5px;
+  }
 input[type="checkbox"]{
   padding: 9px;
   appearance: none;
