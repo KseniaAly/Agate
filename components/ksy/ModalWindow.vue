@@ -15,10 +15,15 @@ function close(){
 </script>
 
 <template>
-  <div class="background" v-if="open" @click="close">
-    <div class="content" @click.stop>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"/>
+
+  <div class="background" v-if="open">
+    <div class="content">
       <div class="head">
         <img src="/img/logo.svg">
+        <i class="fa-solid fa-xmark" @click="close"></i>
       </div>
       <div class="body">
         <h1>Оставить заявку</h1>
@@ -42,6 +47,7 @@ function close(){
 </template>
 
 <style scoped>
+@import "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css";
 *{
   font-family: Monserrat;
 }
@@ -51,6 +57,15 @@ function close(){
   padding: 20px;
   border-top-left-radius: 16px;
   border-top-right-radius: 16px;
+  display: flex;
+  justify-content: space-between;
+}
+.fa-xmark{
+  background-color: #880003;
+  color: white;
+  border-radius: 2px;
+  padding: 3px 5px;
+  height: fit-content;
 }
 .background{
   top: 0;
