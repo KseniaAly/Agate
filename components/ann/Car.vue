@@ -40,18 +40,30 @@ export default {
   methods: {
     async fetchData() {
       try {
-        const response = await fetch('https://hp-api.onrender.com/api/characters');
-        const data = await response.json();
-        this.cars = data;
+        const response = await fetch('https://agat-technic.ru/ajax/catalog/?city=nn&brand[]=daewoo-trucks');
+        const data = await response.text();
+
+        console.log(data);
+
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(data, 'text/html');
+
+        const productElements = doc.querySelectorAll('.catalog-list__item');
+        this.cars = Array.from(productElements).map(product => ({
+          name: product.querySelector('.catalog-list__title')?.textContent || 'Нет имени',
+          image: product.querySelector('mg-fluid')?.src || '',
+          slills: product.querySelector('.catalog-list__text')?.textContent || 'Нет цены',
+          price: product.querySelector('.c-price__new')?.textContent || 'Неизвестен',
+        }));
+
         this.totalItems = this.cars.length;
+
       } catch (error) {
         console.error("Ошибка при получении данных:", error);
       }
     },
     changePage(page) {
-      if (page >= 1 && page <= this.totalPages) {
-        this.currentPage = page;
-      }
+      this.currentPage = page;
     },
     openModal(car) {
       this.selectedCar = car;
@@ -86,15 +98,14 @@ export default {
           @click="openModal(car)"
       >
         <template #h3>{{ car.name }}</template>
-        <template #img><img :src="car.image" alt=""></template>
+        <template #img><img src="/img/default.png" alt="Product Image"></template>
         <template #left>
-          {{ car.gender }} <br>
-          {{ car.species }} <br>
+          {{ car.slills }} <br>
         </template>
-        <template #liz>{{ car.house }}</template>
-        <template #hoz>{{ car.house }}</template>
+        <template #liz>{{ car.price }}</template>
+        <template #hoz>{{ car.brand }}</template>
         <template #button>
-          <button @click.stop="window_open = true">Узнать цену</button>
+          <button @click.stop="window_open = true">Оставить заявку</button>
         </template>
       </card-car>
     </div>
