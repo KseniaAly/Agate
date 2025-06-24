@@ -99,6 +99,12 @@ h3{
 .left, .right{
   display: none;
 }
+  .card-content{
+    justify-content: center;
+  }
+  .flex{
+    justify-content: center;
+  }
 }
 
 @media (max-width: 400px) {
