@@ -7,7 +7,6 @@ const isMobileMenuOpen = ref(false);
 
 const navItems = [
   { name: 'Каталог продукции', link: '/catalog' },
-  { name: 'Бренды', link: '' },
   { name: 'Сервис и запасные части', link: 'https://agat-technic.ru/nn/news/' },
   { name: 'Акции', link: 'https://agat-technic.ru/nn/specials/' },
   { name: 'Услуги', link: 'https://agat-technic.ru/nn/articles/' },
