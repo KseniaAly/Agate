@@ -99,7 +99,7 @@ const toggleMobileMenu = () => {
   align-items: center;
   max-width: 1330px;
   margin: 0 auto;
-  padding: 15px 20px;
+  padding: 15px 0;
   gap: 20px;
 }
 
@@ -185,7 +185,7 @@ const toggleMobileMenu = () => {
   max-width: 1330px;
   margin: 0 auto;
   border-top: solid 1px #fff;
-  padding: 10px 20px;
+  padding: 10px 0;
 }
 
 .nav-list li {
