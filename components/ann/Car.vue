@@ -18,6 +18,7 @@ export default {
       isModalVisible: false,
       selectedCar: null,
       window_open: false,
+      def: 'https://agat-technic.ru/upload/files/7661930/a3d16153aaa1d500b9cc2af9efa87b24.png'
     };
   },
   computed: {
@@ -40,23 +41,10 @@ export default {
   methods: {
     async fetchData() {
       try {
-        const response = await fetch('https://agat-technic.ru/ajax/catalog/?city=nn&brand[]=daewoo-trucks');
-        const data = await response.text();
+        const response = await fetch('https://agat-group.com/api2/instock/?city_id=27&auto_type=3847');
+        const data = await response.json();
 
-        console.log(data);
-
-        const parser = new DOMParser();
-        const doc = parser.parseFromString(data, 'text/html');
-
-        const productElements = doc.querySelectorAll('.catalog-list__item');
-        this.cars = Array.from(productElements).map(product => ({
-          name: product.querySelector('.catalog-list__title')?.textContent || 'Нет имени',
-          image: product.querySelector('mg-fluid')?.src || '',
-          slills: product.querySelector('.catalog-list__text')?.textContent || 'Нет цены',
-          price: product.querySelector('.c-price__new')?.textContent || 'Неизвестен',
-        }));
-
-        this.totalItems = this.cars.length;
+        this.cars = data.data;
 
       } catch (error) {
         console.error("Ошибка при получении данных:", error);
@@ -80,7 +68,7 @@ export default {
     },
     closeWindow() {
       this.window_open = false;
-    }
+    },
   },
   created() {
     this.fetchData();
@@ -92,18 +80,21 @@ export default {
   <section class="car">
     <div class="container">
       <card-car
-          v-for="(car, index) in displayedItems"
+          v-for="(car, index) in cars"
           :key="index"
           :car="car"
           @click="openModal(car)"
       >
         <template #h3>{{ car.name }}</template>
-        <template #img><img src="/img/default.png" alt="Product Image"></template>
+        <template #img><img :src="car.model.image || this.def" alt="Product Image"></template>
         <template #left>
-          {{ car.slills }} <br>
+          {{ car.properties.engine_type }} <br>
+          {{ car.properties.transmission}} <br>
+          {{ car.properties.body_type }} <br>
+          {{ car.properties.engine_volume }} л.
         </template>
-        <template #liz>{{ car.price }}</template>
-        <template #hoz>{{ car.brand }}</template>
+        <template #liz>{{ car.color.name }}</template>
+        <template #hoz>{{ car.properties.year_of_manufacture }}</template>
         <template #button>
           <button @click.stop="window_open = true">Оставить заявку</button>
         </template>

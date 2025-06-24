@@ -18,20 +18,19 @@ defineEmits(["close"]);
   <div v-if="isVisible" class="modal-overlay" @click="$emit('close')">
     <div class="modal-content" @click.stop>
       <div class="card">
-        <img src="https://i.ytimg.com/vi/WlAWWnYWXcE/maxresdefault.jpg" alt="">
+        <img :src="carSelect.model.image || this.def" alt="Product Image">
         <div class="card-content">
           <h3>{{ carSelect.name }}</h3>
           <div class="flex">
             <div class="grid">
               <p class="left">
-                {{ carSelect.gender }} <br>
-                {{ carSelect.species }} <br>
-                {{ carSelect.dateOfBirth }} <br>
+                {{ carSelect.properties.engine_type }} <br>
+                {{ carSelect.properties.transmission}} <br>
+                {{ carSelect.properties.body_type }} <br>
+                {{ carSelect.properties.engine_volume }} л.
               </p>
             </div>
             <div class="grid">
-              <p class="red">{{ carSelect.house }}</p>
-              <p class="gray">{{ carSelect.house }}</p>
               <div class="right">
                 <img src="/img/Cart.png" alt="">
                 <p class="order">Доступна для заказа</p>
