@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup>
 import { ref } from 'vue';
 
 const activeNavItem = ref('');
@@ -15,14 +15,14 @@ const navItems = [
   { name: 'Контакты', link: 'https://agat-technic.ru/nn/contacts/' }
 ];
 
-const setActiveItem = (item: string) => {
+const setActiveItem = (item) => {
   activeNavItem.value = item;
   isMobileMenuOpen.value = false;
 };
 
 const toggleMobileMenu = () => {
   isMobileMenuOpen.value = !isMobileMenuOpen.value;
-};
+}
 </script>
 
 <template>
