@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup>
 import { ref, computed } from 'vue';
 
 const name = ref('');
@@ -68,7 +68,7 @@ const submitForm = () => {
       consent: consent.value
     });
     isSubmitted.value = true;
-    resetForm(); // Очищаем форму
+    resetForm();
     setTimeout(() => isSubmitted.value = false, 3000); // Скрываем сообщение через 5 секунд
   }
 };

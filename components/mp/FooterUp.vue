@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup>
 const socialLinks = {
   telegram: 'https://telegram.me/AGAT_bot',
   whatsapp: 'https://api.whatsapp.com/send?phone=79873901000',
