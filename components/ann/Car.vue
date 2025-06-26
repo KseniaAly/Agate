@@ -45,6 +45,7 @@ export default {
         const data = await response.json();
 
         this.cars = data.data;
+        this.totalItems = data.data.length;
 
       } catch (error) {
         console.error("Ошибка при получении данных:", error);
@@ -80,7 +81,7 @@ export default {
   <section class="car">
     <div class="container">
       <card-car
-          v-for="(car, index) in cars"
+          v-for="(car, index) in displayedItems"
           :key="index"
           :car="car"
           @click="openModal(car)"
@@ -90,10 +91,10 @@ export default {
         <template #left>
           {{ car.properties.engine_type }} <br>
           {{ car.properties.transmission}} <br>
-          {{ car.properties.body_type }} <br>
+          {{ car.properties.gear_type }} <br>
           {{ car.properties.engine_volume }} л.
         </template>
-        <template #liz>{{ car.color.name }}</template>
+        <template #liz>{{ car.price.toLocaleString('ru-RU') }}₽</template>
         <template #hoz>{{ car.properties.year_of_manufacture }}</template>
         <template #button>
           <button @click.stop="window_open = true">Оставить заявку</button>

@@ -80,6 +80,11 @@ h3{
   border-radius: 5px;
   font-weight: 500;
   text-align: center;
+  transition: 0.3s;
+}
+.red:hover{
+  background-color: #9a3c3c;
+  transition: 0.3s;
 }
 .gray{
   background: #1C1919;
@@ -90,6 +95,11 @@ h3{
   margin-top: 5px;
   margin-bottom: 10px;
   text-align: center;
+  transition: 0.3s;
+}
+.gray:hover{
+  background: #4a4a4a;
+  transition: 0.3s;
 }
 .left{
   color: #333333;
