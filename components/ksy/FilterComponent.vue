@@ -132,7 +132,7 @@ function filter_transmission(){
         <p>Двигатель</p>
       </div>
       <div class="content">
-        <h5>Мошность, л.с.</h5>
+        <h5>Мощность, л.с.</h5>
         <div class="buttons">
           <button>до 100</button>
           <button>100-150</button>
@@ -174,10 +174,10 @@ function filter_transmission(){
 </template>
 
 <style scoped>
-@import "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css";
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 *{
   display: block;
-  font-family: Monserrat;
+  font-family: 'Montserrat';
 }
 .btn{
   cursor: pointer;
@@ -202,6 +202,7 @@ h3{
     margin-bottom: 10px;
   }
   .name p{
+    font-size: 14px;
     margin: 0;
     margin-left: 8px;
     color: #333333;
@@ -220,7 +221,7 @@ h3{
     border-radius: 5px;
     padding: 5px 10px;
     background-color: #FCECEC;
-    font-size: 14px;
+    font-size: 13px;
   }
   .buttons button.pressed{
     background-color: #1C1919;
@@ -233,6 +234,7 @@ h3{
     width: 100%;
   }
   .link_button{
+    font-size: 14px;
     margin: 0;
     color: #880003;
     text-decoration: underline;
@@ -272,7 +274,7 @@ input[type="checkbox"]:checked::after{
     align-items: center;
   }
   .select:nth-child(5) .content label{
-    font-size: 14px;
+    font-size: 12px;
     margin-left: 5px;
   }
   #akpp{
@@ -288,7 +290,7 @@ input[type="checkbox"]:checked::after{
   }
   .scroll p{
     margin: 20px 0;
-    font-size: 16px;
+    font-size: 14px;
     color: #1C1919;
   }
   .scroll p:hover{
@@ -306,7 +308,7 @@ input[type="checkbox"]:checked::after{
   }
   h5{
     margin: 0;
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 400;
     color: #333333;
   }
@@ -337,11 +339,13 @@ input[type="checkbox"]:checked::after{
     align-items: center;
   }
   .check .input label{
-    font-size: 16px;
+    font-size: 14px;
     color: #333333;
     margin-left: 5px;
   }
-
+label{
+  font-size: 14px;
+}
   .content{
     display: none;
   }
