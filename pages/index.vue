@@ -11,7 +11,10 @@ function open(){
   click.value = !click.value;
 }
 
-const link = ref('')
+const link = ref('');
+function update(element){
+  link.value = element;
+}
 </script>
 
 <template>
@@ -23,7 +26,7 @@ const link = ref('')
       Фильтр
     </button>
     <div class="block">
-      <filter-component class="filter" :class="{active: click}"/>
+      <filter-component class="filter" :class="{active: click}" @update="update"/>
       <car></car>
       <filter-brand class="left"/>
     </div>

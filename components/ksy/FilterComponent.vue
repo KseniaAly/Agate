@@ -1,4 +1,5 @@
 <script setup>
+import {ref} from "vue";
 function press(element){
   let buttons = document.querySelectorAll(".btn")
   for (let button of buttons){
@@ -60,6 +61,21 @@ function click_second(element){
     }
   }
 }
+
+const emit = defineEmits(['update']);
+const link = ref('');
+function filter_transmission(){
+  if (document.querySelector('#akpp').checked && !document.querySelector('#mkpp').checked){
+    link.value = '/api/instock/?city_id=27&auto_type=3847&property_transmission=АКПП';
+    emit('update', link);
+  } else if (document.querySelector('#mkpp').checked && !document.querySelector('#akpp').checked){
+    link.value = '/api/instock/?city_id=27&auto_type=3847&property_transmission=МКПП';
+    emit('update', link);
+  } else if (document.querySelector('#akpp').checked && document.querySelector('#mkpp').checked){
+    link.value = '/api/instock/?city_id=27&auto_type=3847';
+    emit('update', link);
+  }
+}
 </script>
 
 <template>
@@ -91,11 +107,9 @@ function click_second(element){
         <p>Продукция</p>
       </div>
       <div class="content scroll">
-        <p>Автобетононасос</p>
-        <p>Автобетоносмеситель</p>
-        <p>Прицепная техника</p>
-        <p>Грузовая техника</p>
-        <p>Цельнометаллические автомабили</p>
+        <p>Борт</p>
+        <p>Фургон</p>
+        <p>Цельнометаллический фургон</p>
       </div>
     </div>
     <div class="line"></div>
@@ -105,9 +119,9 @@ function click_second(element){
         <p>Коробка передач</p>
       </div>
       <div class="content">
-        <input type="checkbox" id="mkpp">
+        <input type="checkbox" id="mkpp" @change="filter_transmission">
         <label for="mkpp">МКПП</label>
-        <input type="checkbox" id="akpp">
+        <input type="checkbox" id="akpp" @change="filter_transmission">
         <label for="akpp">АКПП</label>
       </div>
     </div>
@@ -146,12 +160,12 @@ function click_second(element){
     <div class="select" @click="click">
       <div class="name">
         <i class="fa-solid fa-chevron-up"></i>
-        <p>Масса</p>
+        <p>Привод</p>
       </div>
       <div class="content scroll">
-        <p>1 тонна</p>
-        <p>2 тонны</p>
-        <p>3 тонны</p>
+        <p>Задний</p>
+        <p>Передний</p>
+        <p>Полный</p>
       </div>
     </div>
     <div class="line"></div>

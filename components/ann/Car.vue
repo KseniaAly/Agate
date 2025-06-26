@@ -18,7 +18,8 @@ export default {
       isModalVisible: false,
       selectedCar: null,
       window_open: false,
-      def: 'https://agat-technic.ru/upload/files/7661930/a3d16153aaa1d500b9cc2af9efa87b24.png'
+      def: 'https://agat-technic.ru/upload/files/7661930/a3d16153aaa1d500b9cc2af9efa87b24.png',
+      link: '/api/instock/?city_id=27&auto_type=3847',
     };
   },
   computed: {
@@ -41,7 +42,7 @@ export default {
   methods: {
     async fetchData() {
       try {
-        const response = await fetch('/api/instock/?city_id=27&auto_type=3847');
+        const response = await fetch(this.link);
         const data = await response.json();
 
         this.cars = data.data;
