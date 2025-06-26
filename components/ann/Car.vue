@@ -41,7 +41,7 @@ export default {
   methods: {
     async fetchData() {
       try {
-        const response = await fetch('https://agat-group.com/api2/instock/?city_id=27&auto_type=3847');
+        const response = await fetch('/api/instock/?city_id=27&auto_type=3847');
         const data = await response.json();
 
         this.cars = data.data;
