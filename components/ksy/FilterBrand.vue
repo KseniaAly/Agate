@@ -4,18 +4,18 @@ import BrandComponent from "~/components/ksy/BrandComponent.vue";
 import {ref} from "vue";
 
 const brands = ref([
+  {name: 'Газ', src: '/img/GAZ.png'},
   {name: 'Камаз', src: "/img/Kamaz.svg"},
   {name: 'Хино', src: '/img/Hino.svg'},
   {name: 'МАЗ', src: '/img/Maz.svg'},
   {name: 'Тракс', src: '/img/DaewoTracks.svg'},
-  {name: 'Шакман', src: '/img/Shackman.svg'},
-  {name: 'Гром', src: '/img/Grom.svg'}
+  {name: 'Шакман', src: '/img/Shackman.svg'}
 ])
 </script>
 
 <template>
   <div class="body">
-    <brand-component v-for="(brand) in brands" :img="brand"/>
+    <brand-component v-for="(brand) in brands" :img="brand" class="brand"/>
   </div>
 </template>
 
@@ -36,12 +36,20 @@ const brands = ref([
     padding-bottom: 0;
     position: relative;
   }
+
+  .brand:nth-child(1) :deep(img){
+    width: 130px;
+  }
+
 @media (max-width: 768px) {
   .body{
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
     width: 100%;
+  }
+  .brand:nth-child(1) :deep(img){
+    width: 80px;
   }
 }
 </style>

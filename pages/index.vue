@@ -10,6 +10,8 @@ const click = ref(false);
 function open(){
   click.value = !click.value;
 }
+
+const link = ref('')
 </script>
 
 <template>

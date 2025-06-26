@@ -76,11 +76,11 @@ function click_second(element){
         <p>Бренд</p>
       </div>
       <div class="content scroll">
-        <p>Kamaz</p>
-        <p>Daewoo Trucks</p>
         <p>Газ</p>
-        <p>MAZ</p>
+        <p>Kamaz</p>
         <p>HINO</p>
+        <p>MAZ</p>
+        <p>Daewoo Trucks</p>
         <p>SHACMAN</p>
       </div>
     </div>
