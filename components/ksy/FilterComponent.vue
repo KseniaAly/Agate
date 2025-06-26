@@ -67,13 +67,13 @@ const link = ref('');
 function filter_transmission(){
   if (document.querySelector('#akpp').checked && !document.querySelector('#mkpp').checked){
     link.value = '/api/instock/?city_id=27&auto_type=3847&property_transmission=АКПП';
-    emit('update', link);
+    emit('update', link.value);
   } else if (document.querySelector('#mkpp').checked && !document.querySelector('#akpp').checked){
     link.value = '/api/instock/?city_id=27&auto_type=3847&property_transmission=МКПП';
-    emit('update', link);
+    emit('update', link.value);
   } else if (document.querySelector('#akpp').checked && document.querySelector('#mkpp').checked){
     link.value = '/api/instock/?city_id=27&auto_type=3847';
-    emit('update', link);
+    emit('update', link.value);
   }
 }
 </script>
@@ -119,9 +119,9 @@ function filter_transmission(){
         <p>Коробка передач</p>
       </div>
       <div class="content">
-        <input type="checkbox" id="mkpp" @change="filter_transmission">
+        <input type="checkbox" id="mkpp" @click="filter_transmission">
         <label for="mkpp">МКПП</label>
-        <input type="checkbox" id="akpp" @change="filter_transmission">
+        <input type="checkbox" id="akpp" @click="filter_transmission">
         <label for="akpp">АКПП</label>
       </div>
     </div>

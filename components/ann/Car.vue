@@ -70,7 +70,7 @@ export default {
     },
     closeWindow() {
       this.window_open = false;
-    },
+    }
   },
   created() {
     this.fetchData();
