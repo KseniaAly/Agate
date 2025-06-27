@@ -2,7 +2,7 @@
 import { ref } from 'vue'
 
 const emit = defineEmits(['update'])
-let link = ref('/api/instock/?city_id=27&auto_type=3847')
+const link = ref('/api/instock/?city_id=27&auto_type=3847')
 
 function filter_transmission() {
   const akpp = document.querySelector('#akpp')?.checked
@@ -17,6 +17,11 @@ function filter_transmission() {
   } else if(!mkpp){
     link.value = link.value.replace('&property_transmission=МКПП', '')
   }
+  emit('update', link.value)
+}
+
+function removeFilter(){
+  link.value = '/api/instock/?city_id=27&auto_type=3847'
   emit('update', link.value)
 }
 
@@ -179,7 +184,7 @@ function click_second(element){
       </div>
     </div>
     <div class="line"></div>
-    <p class="link_button">Сбросить параметры фильтра</p>
+    <p class="link_button" id="remove" @click="removeFilter">Сбросить параметры фильтра</p>
   </div>
 </template>
 
@@ -248,6 +253,7 @@ h3{
     margin: 0;
     color: #880003;
     text-decoration: underline;
+    cursor: pointer;
   }
   .input{
     margin-bottom: 5px;
