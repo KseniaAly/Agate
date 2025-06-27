@@ -11,7 +11,7 @@ function open(){
   click.value = !click.value;
 }
 
-let link = ref("/api/instock/?city_id=27&auto_type=3847&property_gross_weight=2800");
+let link = ref("/api/instock/?city_id=27&auto_type=3847");
 function updateLink(newLink) {
   link.value = newLink;
 }
