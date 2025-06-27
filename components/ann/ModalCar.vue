@@ -46,54 +46,54 @@ defineEmits(["close"]);
         <div class="flex-wrap">
         <div class="grid">
           <h3>Двигатель</h3>
-          <div class="flex2"><p>Тип двигателя</p><p>{{ carSelect.properties.engine_type }}</p></div>
-          <div class="flex2"><p>Крутящий момент</p><p>{{ carSelect.properties.turning_torque }}</p></div>
-          <div class="flex2"><p>Объем двигателя</p><p>{{ carSelect.properties.engine_volume }}</p></div>
-          <div class="flex2"><p>Расположение цилиндров</p><p>{{ carSelect.properties.cylinder_configuration }}</p></div>
-          <div class="flex2"><p>Мощность двигателя л.с. при об/мин</p><p>{{ carSelect.properties.engine_power }}</p></div>
-          <div class="flex2"><p>Экологический класс</p><p>{{ carSelect.properties.environmental_class.toUpperCase() }}</p></div>
+          <div class="flex2"><p>Тип двигателя</p><p>{{ carSelect.properties.engine_type || 'Не указано'}}</p></div>
+          <div class="flex2"><p>Крутящий момент</p><p>{{ carSelect.properties.turning_torque || 'Не указано'}}</p></div>
+          <div class="flex2"><p>Объем двигателя</p><p>{{ carSelect.properties.engine_volume || 'Не указано'}}</p></div>
+          <div class="flex2"><p>Расположение цилиндров</p><p>{{ carSelect.properties.cylinder_configuration || 'Не указано'}}</p></div>
+          <div class="flex2"><p>Мощность двигателя л.с. при об/мин</p><p>{{ carSelect.properties.engine_power || 'Не указано'}}</p></div>
+          <div class="flex2"><p>Экологический класс</p><p>{{ carSelect.properties.environmental_class.toUpperCase() || 'Не указано'}}</p></div>
         </div>
 
           <div class="grid">
             <h3>Трансмиссия</h3>
-            <div class="flex2"><p>Трансмиссия</p><p>{{ carSelect.properties.transmission }}</p></div>
-            <div class="flex2"><p>Тип привода</p><p>{{ carSelect.properties.gear_type }}</p></div>
-            <div class="flex2"><p>Число передач</p><p>{{ carSelect.properties.gear_number }}</p></div>
+            <div class="flex2"><p>Трансмиссия</p><p>{{ carSelect.properties.transmission || 'Не указано'}}</p></div>
+            <div class="flex2"><p>Тип привода</p><p>{{ carSelect.properties.gear_type || 'Не указано'}}</p></div>
+            <div class="flex2"><p>Число передач</p><p>{{ carSelect.properties.gear_number || 'Не указано'}}</p></div>
           </div>
 
           <div class="grid">
             <h3>Габариты</h3>
-            <div class="flex2"><p>Длина, мм</p><p>{{ carSelect.properties.length }}</p></div>
-            <div class="flex2"><p>Ширина, мм</p><p>{{ carSelect.properties.width }}</p></div>
-            <div class="flex2"><p>Высота, мм</p><p>{{ carSelect.properties.height }}</p></div>
-            <div class="flex2"><p>Диаметр разворота, м</p><p>{{ carSelect.properties.turn_diameter }}</p></div>
+            <div class="flex2"><p>Длина, мм</p><p>{{ carSelect.properties.length || 'Не указано'}}</p></div>
+            <div class="flex2"><p>Ширина, мм</p><p>{{ carSelect.properties.width || 'Не указано'}}</p></div>
+            <div class="flex2"><p>Высота, мм</p><p>{{ carSelect.properties.height || 'Не указано'}}</p></div>
+            <div class="flex2"><p>Диаметр разворота, м</p><p>{{ carSelect.properties.turn_diameter || 'Не указано'}}</p></div>
           </div>
 
           <div class="grid">
             <h3>Подвеска</h3>
-            <div class="flex2"><p>Колея передняя, мм</p><p>{{ carSelect.properties.front_track }}</p></div>
-            <div class="flex2"><p>Колея задняя, мм</p><p>{{ carSelect.properties.back_track }}</p></div>
-            <div class="flex2"><p>Колесная база, мм</p><p>{{ carSelect.properties.wheel_base }}</p></div>
+            <div class="flex2"><p>Колея передняя, мм</p><p>{{ carSelect.properties.front_track || 'Не указано'}}</p></div>
+            <div class="flex2"><p>Колея задняя, мм</p><p>{{ carSelect.properties.back_track || 'Не указано'}}</p></div>
+            <div class="flex2"><p>Колесная база, мм</p><p>{{ carSelect.properties.wheel_base || 'Не указано'}}</p></div>
           </div>
 
           <div class="grid">
             <h3>Динамические характеристики</h3>
-            <div class="flex2"><p>Максимальная скорость, км/ч</p><p>{{ carSelect.properties.max_speed }}</p></div>
+            <div class="flex2"><p>Максимальная скорость, км/ч</p><p>{{ carSelect.properties.max_speed || 'Не указано'}}</p></div>
           </div>
 
           <div class="grid">
             <h3>Общие</h3>
-            <div class="flex2"><p>Тип кузова</p><p>{{ carSelect.properties.body_type }}</p></div>
+            <div class="flex2"><p>Тип кузова</p><p>{{ carSelect.properties.body_type || 'Не указано'}}</p></div>
           </div>
           <div class="grid">
             <h3>Масса</h3>
-            <div class="flex2"><p>Снаряженная масса, кг</p><p>{{ carSelect.properties.unladen_weight }}</p></div>
-            <div class="flex2"><p>Полная масса, кг</p><p>{{ carSelect.properties.gross_weight }}</p></div>
+            <div class="flex2"><p>Снаряженная масса, кг</p><p>{{ carSelect.properties.unladen_weight || 'Не указано'}}</p></div>
+            <div class="flex2"><p>Полная масса, кг</p><p>{{ carSelect.properties.gross_weight || 'Не указано'}}</p></div>
           </div>
 
           <div class="grid">
             <h3>Размеры</h3>
-            <div class="flex2"><p>Количество мест</p><p>{{ carSelect.properties.seats }}</p></div>
+            <div class="flex2"><p>Количество мест</p><p>{{ carSelect.properties.seats || 'Не указано'}}</p></div>
           </div>
         </div>
       </div>
