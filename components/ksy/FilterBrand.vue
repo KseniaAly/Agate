@@ -4,12 +4,12 @@ import BrandComponent from "~/components/ksy/BrandComponent.vue";
 import {ref} from "vue";
 
 const brands = ref([
-  {name: 'Газ', src: '/img/GAZ.png', link: '/api/instock/?city_id=27&auto_type=3847&brand_name=ГАЗ'},
-  {name: 'Камаз', src: "/img/Kamaz.svg", link: '/api/instock/?city_id=27&auto_type=3848'},
-  {name: 'Хино', src: '/img/Hino.svg', link: '/api/instock/?city_id=27&auto_type=3848'},
-  {name: 'МАЗ', src: '/img/Maz.svg', link: '/api/instock/?city_id=27&auto_type=3848'},
-  {name: 'Тракс', src: '/img/DaewoTracks.svg', link: '/api/instock/?city_id=27&auto_type=3848'},
-  {name: 'Шакман', src: '/img/Shackman.svg', link: '/api/instock/?city_id=27&auto_type=3848'}
+  {name: 'Газ', src: '/img/GAZ.png', link: '&brand_name=ГАЗ'},
+  {name: 'Камаз', src: "/img/Kamaz.svg", link: '8'},
+  {name: 'Хино', src: '/img/Hino.svg', link: '8'},
+  {name: 'МАЗ', src: '/img/Maz.svg', link: '8'},
+  {name: 'Тракс', src: '/img/DaewoTracks.svg', link: '8'},
+  {name: 'Шакман', src: '/img/Shackman.svg', link: '8'}
 ])
 
 const emit = defineEmits(['update'])

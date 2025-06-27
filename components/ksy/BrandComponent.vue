@@ -15,12 +15,12 @@ let link = ref('/api/instock/?city_id=27&auto_type=3847')
 
 function press(){
   click.value = true;
-  link.value = props.img.link;
+  link.value = link.value+props.img.link
   emit('update', link.value)
 }
 function remove(){
   click.value = false;
-  link.value = '/api/instock/?city_id=27&auto_type=3847'
+  link.value = link.value.replace(props.img.link, '')
   emit('update', link.value)
 
 }
