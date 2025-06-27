@@ -20,8 +20,50 @@ function filter_transmission() {
   emit('update', link.value)
 }
 
-function wes() {
-  link.value = '/api/instock/?city_id=27&auto_type=3847&property_gross_weight=2800'
+function bort() {
+  link.value.replace('&property_body_type=Фургон', '')
+  link.value.replace('&property_body_type=Цельнометаллический фургон', '')
+  link.value = link.value+'&property_body_type=Борт'
+  emit('update', link.value)
+}
+
+function fur() {
+  link.value.replace('&property_body_type=Борт', '')
+  link.value.replace('&property_body_type=Цельнометаллический фургон', '')
+  link.value = link.value+'&property_body_type=Фургон'
+  emit('update', link.value)
+}
+
+function chfur() {
+  link.value.replace('&property_body_type=Фургон', '')
+  link.value.replace('&property_body_type=Борт', '')
+  link.value = link.value+'&property_body_type=Цельнометаллический фургон'
+  emit('update', link.value)
+}
+
+function zadn() {
+  link.value.replace('&property_gear_type=Передний', '')
+  link.value.replace('&property_gear_type=Полный', '')
+  link.value = link.value+'&property_body_gear_type=Задний'
+  emit('update', link.value)
+}
+
+function pered() {
+  link.value.replace('&property_gear_type=Задний', '')
+  link.value.replace('&property_gear_type=Полный', '')
+  link.value = link.value+'&property_body_gear_type=Передний'
+  emit('update', link.value)
+}
+
+function poln() {
+  link.value.replace('&property_gear_type=Передний', '')
+  link.value.replace('&property_gear_type=Задний', '')
+  link.value = link.value+'&property_body_gear_type=Полный'
+  emit('update', link.value)
+}
+
+function none() {
+  link.value = '/api/instock/?city_id=27&auto_type=3847'
   emit('update', link.value)
 }
 
@@ -117,9 +159,9 @@ function click_second(element){
         <p>Продукция</p>
       </div>
       <div class="content scroll">
-        <p>Борт</p>
-        <p>Фургон</p>
-        <p>Цельнометаллический фургон</p>
+        <button class="type-car" @click="bort">Борт</button>
+        <button class="type-car" @click="fur">Фургон</button>
+        <button class="type-car" @click="chfur">Цельнометаллический фургон</button>
       </div>
     </div>
     <div class="line"></div>
@@ -173,13 +215,13 @@ function click_second(element){
         <p>Привод</p>
       </div>
       <div class="content scroll">
-        <p>Задний</p>
-        <p>Передний</p>
-        <p>Полный</p>
+        <button class="type-car" @click="zadn">Задний</button>
+        <button class="type-car" @click="pered">Передний</button>
+        <button class="type-car" @click="poln">Полный</button>
       </div>
     </div>
     <div class="line"></div>
-    <p class="link_button">Сбросить параметры фильтра</p>
+    <button class="link_button" @click="none">Сбросить параметры фильтра</button>
   </div>
 </template>
 
@@ -248,7 +290,15 @@ h3{
     margin: 0;
     color: #880003;
     text-decoration: underline;
+    background: none;
+    border: none;
+    transition: 0.3s;
   }
+.link_button:hover {
+  cursor: pointer;
+  color: black;
+  transition: 0.3s;
+}
   .input{
     margin-bottom: 5px;
   }
@@ -298,14 +348,29 @@ input[type="checkbox"]:checked::after{
     padding: 0 15px;
     border-radius: 5px;
   }
-  .scroll p{
+  .scroll p, .type-car{
+    background: none;
+    border: none;
+    text-align: start;
     margin: 20px 0;
     font-size: 14px;
     color: #1C1919;
   }
+.type-car:hover{
+  color: #880003;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.type-car:focus{
+  color: #880003;
+  cursor: pointer;
+  font-weight: 500;
+}
   .scroll p:hover{
     cursor: pointer;
     color: #880003;
+
   }
   .scroll::-webkit-scrollbar {
     width: 7px;
