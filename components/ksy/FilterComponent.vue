@@ -65,6 +65,10 @@ function poln() {
 function none() {
   link.value = '/api/instock/?city_id=27&auto_type=3847'
   emit('update', link.value)
+  const akpp = document.querySelector('#akpp')
+  const mkpp = document.querySelector('#mkpp')
+  akpp.checked = false;
+  mkpp.checked = false;
 }
 
 function press(element){
