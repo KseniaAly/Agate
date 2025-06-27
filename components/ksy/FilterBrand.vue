@@ -4,18 +4,23 @@ import BrandComponent from "~/components/ksy/BrandComponent.vue";
 import {ref} from "vue";
 
 const brands = ref([
-  {name: 'Газ', src: '/img/GAZ.png'},
-  {name: 'Камаз', src: "/img/Kamaz.svg"},
-  {name: 'Хино', src: '/img/Hino.svg'},
-  {name: 'МАЗ', src: '/img/Maz.svg'},
-  {name: 'Тракс', src: '/img/DaewoTracks.svg'},
-  {name: 'Шакман', src: '/img/Shackman.svg'}
+  {name: 'Газ', src: '/img/GAZ.png', link: '/api/instock/?city_id=27&auto_type=3847&brand_name=ГАЗ'},
+  {name: 'Камаз', src: "/img/Kamaz.svg", link: '/api/instock/?city_id=27&auto_type=3848'},
+  {name: 'Хино', src: '/img/Hino.svg', link: '/api/instock/?city_id=27&auto_type=3848'},
+  {name: 'МАЗ', src: '/img/Maz.svg', link: '/api/instock/?city_id=27&auto_type=3848'},
+  {name: 'Тракс', src: '/img/DaewoTracks.svg', link: '/api/instock/?city_id=27&auto_type=3848'},
+  {name: 'Шакман', src: '/img/Shackman.svg', link: '/api/instock/?city_id=27&auto_type=3848'}
 ])
+
+const emit = defineEmits(['update'])
+function updateLink(newLink){
+  emit('update', newLink)
+}
 </script>
 
 <template>
   <div class="body">
-    <brand-component v-for="(brand) in brands" :img="brand" class="brand"/>
+    <brand-component v-for="(brand) in brands" :img="brand" class="brand" @update="updateLink"/>
   </div>
 </template>
 
