@@ -313,7 +313,7 @@ input[type="checkbox"]:checked::after{
     color: #333333;
   }
   .content .buttons{
-    width: 210px;
+    width: 220px;
     flex-wrap: wrap;
     margin-top: 10px;
     margin-bottom: 10px;

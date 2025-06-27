@@ -9,6 +9,12 @@ export default {
     CardCar,
     ModalCar
   },
+  props:{
+    linkNew:{
+      type: String,
+      required: true
+    }
+  },
   data() {
     return {
       currentPage: 1,
@@ -74,6 +80,12 @@ export default {
   },
   created() {
     this.fetchData();
+  },
+  watch:{
+    linkNew(newValue){
+      this.link = newValue;
+      console.log(newValue);
+    }
   }
 }
 </script>

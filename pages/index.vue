@@ -27,7 +27,7 @@ function update(element){
     </button>
     <div class="block">
       <filter-component class="filter" :class="{active: click}" @update="update"/>
-      <car></car>
+      <car :link-new="link.value"></car>
       <filter-brand class="left"/>
     </div>
   </div>
