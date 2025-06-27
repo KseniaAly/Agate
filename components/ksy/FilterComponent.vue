@@ -9,11 +9,11 @@ function filter_transmission() {
   const mkpp = document.querySelector('#mkpp')?.checked
 
   if (akpp && !mkpp) {
-    link.value = '/api/instock/?city_id=27&auto_type=3847&property_transmission=АКПП'
+    link.value = '&property_transmission=АКПП'
   } else if (mkpp && !akpp) {
-    link.value = '/api/instock/?city_id=27&auto_type=3847&property_transmission=МКПП'
+    link.value = '&property_transmission=МКПП'
   } else {
-    link.value = '/api/instock/?city_id=27&auto_type=3847'
+    link.value = ''
   }
 
   emit('update', link.value)
