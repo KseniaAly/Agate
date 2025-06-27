@@ -106,6 +106,16 @@ function filter_engineType() {
   emit('update', link.value)
 }
 
+function applyEnginePower(min, max) {
+  link.value = link.value.replace(/&property_engine_power_min=\d+/g, '')
+  link.value = link.value.replace(/&property_engine_power_max=\d+/g, '')
+
+  if (min !== null) link.value += `&property_engine_power_min=${min}`
+  if (max !== null) link.value += `&property_engine_power_max=${max}`
+
+  emit('update', link.value)
+}
+
 //Для раскрытия
 function press(element){
   let buttons = document.querySelectorAll(".btn")
@@ -226,10 +236,10 @@ function click_second(element){
       <div class="content">
         <h5>Мощность, л.с.</h5>
         <div class="buttons">
-          <button>до 100</button>
-          <button>100-150</button>
-          <button>150-200</button>
-          <button>200+</button>
+          <button class="type-car3" @click="applyEnginePower(0, 100)">до 100</button>
+          <button class="type-car3" @click="applyEnginePower(100, 150)">100-150</button>
+          <button class="type-car3" @click="applyEnginePower(151, 200)">150-200</button>
+          <button class="type-car3" @click="applyEnginePower(201, null)">200+</button>
         </div>
         <h5>Тип двигателя</h5>
         <div class="check">
@@ -302,6 +312,7 @@ h3{
   .name i{
     color: #D51317;
   }
+
   .buttons{
     display: flex;
     justify-content: space-between;

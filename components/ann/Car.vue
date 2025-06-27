@@ -51,6 +51,22 @@ export default {
         const data = await response.json();
 
         this.cars = data.data || [];
+
+        const url = new URL(this.linkNew, 'https://agat-group.com')
+        const minPower = parseInt(url.searchParams.get('property_engine_power_min'))
+        const maxPower = parseInt(url.searchParams.get('property_engine_power_max'))
+
+        console.log(minPower, maxPower)
+
+        if (!isNaN(minPower)) {
+          this.cars = this.cars.filter(car => parseInt(car.properties.engine_power) >= minPower)
+        }
+        if (!isNaN(maxPower)) {
+          this.cars = this.cars.filter(car => parseInt(car.properties.engine_power) <= maxPower)
+        }
+
+
+
         this.totalItems = this.cars.length;
         this.currentPage = 1; // сбрасываем на первую страницу
       } catch (error) {
