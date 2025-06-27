@@ -82,7 +82,6 @@ export default {
   },
   watch:{
     linkNew(newValue){
-      console.log(this.linkNew);
       this.fetchData();
     }
   }

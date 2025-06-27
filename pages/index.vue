@@ -13,7 +13,7 @@ function open(){
 
 let link = ref("/api/instock/?city_id=27&auto_type=3847");
 function updateLink(newLink) {
-  link.value = '/api/instock/?city_id=27&auto_type=3847'+newLink;
+  link.value = newLink;
 }
 </script>
 

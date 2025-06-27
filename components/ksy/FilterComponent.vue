@@ -8,14 +8,15 @@ function filter_transmission() {
   const akpp = document.querySelector('#akpp')?.checked
   const mkpp = document.querySelector('#mkpp')?.checked
 
-  if (akpp && !mkpp) {
-    link.value = '&property_transmission=АКПП'
-  } else if (mkpp && !akpp) {
-    link.value = '&property_transmission=МКПП'
-  } else {
-    link.value = ''
+  if (akpp) {
+    link.value = link.value+'&property_transmission=АКПП'
+  } else if (mkpp) {
+    link.value = link.value+'&property_transmission=МКПП'
+  } else if(!akpp){
+    link.value = link.value.replace('&property_transmission=АКПП', '')
+  } else if(!mkpp){
+    link.value = link.value.replace('&property_transmission=МКПП', '')
   }
-
   emit('update', link.value)
 }
 
