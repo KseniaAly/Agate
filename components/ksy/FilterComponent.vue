@@ -116,20 +116,45 @@ function applyEnginePower(min, max) {
   emit('update', link.value)
 }
 
-function buttonClicked(){
+function buttonClickedOne(){
   let buttons = document.querySelectorAll(".type-car3")
   for (let button of buttons){
     if(button.classList.contains('activeButton')){
       button.classList.remove('activeButton')
     }
-  } let element
-  if (document.querySelector("#one").click){
-     element = document.querySelector("#one");
-  } else if(document.querySelector("#two").click){
-    element = document.querySelector("#two");
-  } else if (){}
+  }
+  let element = document.querySelector("#one");
   element.classList.add('activeButton')
-
+}
+function buttonClickedTwo(){
+  let buttons = document.querySelectorAll(".type-car3")
+  for (let button of buttons){
+    if(button.classList.contains('activeButton')){
+      button.classList.remove('activeButton')
+    }
+  }
+  let element = document.querySelector("#two");
+  element.classList.add('activeButton')
+}
+function buttonClickedThree(){
+  let buttons = document.querySelectorAll(".type-car3")
+  for (let button of buttons){
+    if(button.classList.contains('activeButton')){
+      button.classList.remove('activeButton')
+    }
+  }
+  let element = document.querySelector("#three");
+  element.classList.add('activeButton')
+}
+function buttonClickedFour(){
+  let buttons = document.querySelectorAll(".type-car3")
+  for (let button of buttons){
+    if(button.classList.contains('activeButton')){
+      button.classList.remove('activeButton')
+    }
+  }
+  let element = document.querySelector("#four");
+  element.classList.add('activeButton')
 }
 
 //Для раскрытия
@@ -252,10 +277,10 @@ function click_second(element){
       <div class="content">
         <h5>Мощность, л.с.</h5>
         <div class="buttons">
-          <button class="type-car3" @click="applyEnginePower(0, 100); buttonClicked()" id="one">до 100</button>
-          <button class="type-car3" @click="applyEnginePower(100, 125); buttonClicked()" id="two">100-125</button>
-          <button class="type-car3" @click="applyEnginePower(125, 200); buttonClicked()" id="three">125-200</button>
-          <button class="type-car3" @click="applyEnginePower(201, null); buttonClicked()" id="four">200+</button>
+          <button class="type-car3" @click="applyEnginePower(0, 100); buttonClickedOne()" id="one">до 100</button>
+          <button class="type-car3" @click="applyEnginePower(100, 125); buttonClickedTwo()" id="two">100-125</button>
+          <button class="type-car3" @click="applyEnginePower(125, 200); buttonClickedThree()" id="three">125-200</button>
+          <button class="type-car3" @click="applyEnginePower(201, null); buttonClickedFour()" id="four">200+</button>
         </div>
         <h5>Тип двигателя</h5>
         <div class="check">
@@ -297,7 +322,7 @@ function click_second(element){
   display: block;
   font-family: 'Montserrat';
 }
-.activeButton{
+.content .type-car3.activeButton{
   background-color: #D51317;
   color: white;
 }
@@ -465,7 +490,7 @@ input[type="checkbox"]:checked::after{
     margin-top: 10px;
     margin-bottom: 10px;
   }
-  .content .buttons button{
+  .content .type-car3{
     width: fit-content;
     padding: 6px 11px;
     margin-bottom: 7px;
@@ -473,7 +498,7 @@ input[type="checkbox"]:checked::after{
     border: 1px solid #DADADA;
     color: #1C1919;
   }
-  .content .buttons button:hover{
+  .content .type-car3:hover{
     background-color: #D51317;
     border: 1px solid #D51317;
     color: white;
