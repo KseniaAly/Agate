@@ -116,6 +116,22 @@ function applyEnginePower(min, max) {
   emit('update', link.value)
 }
 
+function buttonClicked(){
+  let buttons = document.querySelectorAll(".type-car3")
+  for (let button of buttons){
+    if(button.classList.contains('activeButton')){
+      button.classList.remove('activeButton')
+    }
+  } let element
+  if (document.querySelector("#one").click){
+     element = document.querySelector("#one");
+  } else if(document.querySelector("#two").click){
+    element = document.querySelector("#two");
+  } else if (){}
+  element.classList.add('activeButton')
+
+}
+
 //Для раскрытия
 function press(element){
   let buttons = document.querySelectorAll(".btn")
@@ -236,10 +252,10 @@ function click_second(element){
       <div class="content">
         <h5>Мощность, л.с.</h5>
         <div class="buttons">
-          <button class="type-car3" @click="applyEnginePower(0, 100)">до 100</button>
-          <button class="type-car3" @click="applyEnginePower(100, 150)">100-150</button>
-          <button class="type-car3" @click="applyEnginePower(151, 200)">150-200</button>
-          <button class="type-car3" @click="applyEnginePower(201, null)">200+</button>
+          <button class="type-car3" @click="applyEnginePower(0, 100); buttonClicked()" id="one">до 100</button>
+          <button class="type-car3" @click="applyEnginePower(100, 125); buttonClicked()" id="two">100-125</button>
+          <button class="type-car3" @click="applyEnginePower(125, 200); buttonClicked()" id="three">125-200</button>
+          <button class="type-car3" @click="applyEnginePower(201, null); buttonClicked()" id="four">200+</button>
         </div>
         <h5>Тип двигателя</h5>
         <div class="check">
@@ -281,6 +297,11 @@ function click_second(element){
   display: block;
   font-family: 'Montserrat';
 }
+.activeButton{
+  background-color: #D51317;
+  color: white;
+}
+
 .btn{
   cursor: pointer;
   margin-right: 5px;
