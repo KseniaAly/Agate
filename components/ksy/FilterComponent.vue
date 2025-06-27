@@ -215,9 +215,9 @@ function click_second(element){
         <p>Привод</p>
       </div>
       <div class="content scroll">
-        <button class="type-car" @click="zadn">Задний</button>
-        <button class="type-car" @click="pered">Передний</button>
-        <button class="type-car" @click="poln">Полный</button>
+        <button class="type-car2" @click="zadn">Задний</button>
+        <button class="type-car2" @click="pered">Передний</button>
+        <button class="type-car2" @click="poln">Полный</button>
       </div>
     </div>
     <div class="line"></div>
@@ -348,7 +348,7 @@ input[type="checkbox"]:checked::after{
     padding: 0 15px;
     border-radius: 5px;
   }
-  .scroll p, .type-car{
+  .scroll p, .type-car, .type-car2{
     background: none;
     border: none;
     text-align: start;
@@ -356,13 +356,13 @@ input[type="checkbox"]:checked::after{
     font-size: 14px;
     color: #1C1919;
   }
-.type-car:hover{
+.type-car:hover, .type-car2:hover{
   color: #880003;
   cursor: pointer;
   font-weight: 500;
 }
 
-.type-car:focus{
+.type-car:focus, .type-car2:focus{
   color: #880003;
   cursor: pointer;
   font-weight: 500;
