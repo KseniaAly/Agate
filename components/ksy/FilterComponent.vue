@@ -44,21 +44,21 @@ function chfur() {
 function zadn() {
   link.value.replace('&property_gear_type=Передний', '')
   link.value.replace('&property_gear_type=Полный', '')
-  link.value = link.value+'&property_body_gear_type=Задний'
+  link.value = link.value+'&property_gear_type=Задний'
   emit('update', link.value)
 }
 
 function pered() {
   link.value.replace('&property_gear_type=Задний', '')
   link.value.replace('&property_gear_type=Полный', '')
-  link.value = link.value+'&property_body_gear_type=Передний'
+  link.value = link.value+'&property_gear_type=Передний'
   emit('update', link.value)
 }
 
 function poln() {
   link.value.replace('&property_gear_type=Передний', '')
   link.value.replace('&property_gear_type=Задний', '')
-  link.value = link.value+'&property_body_gear_type=Полный'
+  link.value = link.value+'&property_gear_type=Полный'
   emit('update', link.value)
 }
 
