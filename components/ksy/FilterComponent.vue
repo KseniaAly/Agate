@@ -1,5 +1,29 @@
 <script setup>
-import {ref} from "vue";
+import { ref } from 'vue'
+
+const emit = defineEmits(['update'])
+let link = ref('/api/instock/?city_id=27&auto_type=3847')
+
+function filter_transmission() {
+  const akpp = document.querySelector('#akpp')?.checked
+  const mkpp = document.querySelector('#mkpp')?.checked
+
+  if (akpp && !mkpp) {
+    link.value = '/api/instock/?city_id=27&auto_type=3847&property_transmission=АКПП'
+  } else if (mkpp && !akpp) {
+    link.value = '/api/instock/?city_id=27&auto_type=3847&property_transmission=МКПП'
+  } else {
+    link.value = '/api/instock/?city_id=27&auto_type=3847'
+  }
+
+  emit('update', link.value)
+}
+
+function wes() {
+  link.value = '/api/instock/?city_id=27&auto_type=3847&property_gross_weight=2800'
+  emit('update', link.value)
+}
+
 function press(element){
   let buttons = document.querySelectorAll(".btn")
   for (let button of buttons){
@@ -62,24 +86,38 @@ function click_second(element){
   }
 }
 
-const emit = defineEmits(['update']);
-const link = ref('');
-function filter_transmission(){
-  if (document.querySelector('#akpp').checked && !document.querySelector('#mkpp').checked){
-    link.value = '/api/instock/?city_id=27&auto_type=3847&property_transmission=АКПП';
-    emit('update', link.value);
-  } else if (document.querySelector('#mkpp').checked && !document.querySelector('#akpp').checked){
-    link.value = '/api/instock/?city_id=27&auto_type=3847&property_transmission=МКПП';
-    emit('update', link.value);
-  } else if (document.querySelector('#akpp').checked && document.querySelector('#mkpp').checked){
-    link.value = '/api/instock/?city_id=27&auto_type=3847';
-    emit('update', link.value);
-  }
-}
+// const emit = defineEmits(['update']);
+// const link = ref('');
+// function filter_transmission(){
+//   if (document.querySelector('#akpp').checked && !document.querySelector('#mkpp').checked){
+//     link.value = '/api/instock/?city_id=27&auto_type=3847&property_transmission=АКПП';
+//     emit('update', link.value);
+//   } else if (document.querySelector('#mkpp').checked && !document.querySelector('#akpp').checked){
+//     link.value = '/api/instock/?city_id=27&auto_type=3847&property_transmission=МКПП';
+//     emit('update', link.value);
+//   } else if (document.querySelector('#akpp').checked && document.querySelector('#mkpp').checked){
+//     link.value = '/api/instock/?city_id=27&auto_type=3847';
+//     emit('update', link.value);
+//   }
+// }
 </script>
 
 <template>
   <div class="body">
+    <div class="filter-box">
+      <h3>Фильтры</h3>
+      <div>
+        <label>
+          <input type="checkbox" id="mkpp" @change="filter_transmission" />
+          МКПП
+        </label>
+        <label>
+          <input type="checkbox" id="akpp" @change="filter_transmission" />
+          АКПП
+        </label>
+      </div>
+    </div>
+
     <h3>Подобрать технику</h3>
     <div class="buttons">
       <button class="btn pressed" @click="press">Все</button>

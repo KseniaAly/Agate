@@ -11,9 +11,9 @@ function open(){
   click.value = !click.value;
 }
 
-const link = ref('');
-function update(element){
-  link.value = element;
+let link = ref("/api/instock/?city_id=27&auto_type=3847&property_gross_weight=2800");
+function updateLink(newLink) {
+  link.value = newLink;
 }
 </script>
 
@@ -25,9 +25,10 @@ function update(element){
       <img src="/img/Union.svg">
       Фильтр
     </button>
+    <button @click="wes">Изменить вес</button>
     <div class="block">
-      <filter-component class="filter" :class="{active: click}" @update="update"/>
-      <car :link-new="link.value"></car>
+      <filter-component class="filter" :class="{ active: click }" @update="updateLink" />
+      <car :link-new="link" />
       <filter-brand class="left"/>
     </div>
   </div>

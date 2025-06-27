@@ -10,7 +10,7 @@ export default {
     ModalCar
   },
   props:{
-    linkNew:{
+    linkNew: {
       type: String,
       required: true
     }
@@ -24,8 +24,7 @@ export default {
       isModalVisible: false,
       selectedCar: null,
       window_open: false,
-      def: 'https://agat-technic.ru/upload/files/7661930/a3d16153aaa1d500b9cc2af9efa87b24.png',
-      link: '/api/instock/?city_id=27&auto_type=3847',
+      def: 'https://agat-technic.ru/upload/files/7661930/a3d16153aaa1d500b9cc2af9efa87b24.png'
     };
   },
   computed: {
@@ -48,12 +47,12 @@ export default {
   methods: {
     async fetchData() {
       try {
-        const response = await fetch(this.link);
+        const response = await fetch(this.linkNew);
         const data = await response.json();
 
-        this.cars = data.data;
-        this.totalItems = data.data.length;
-
+        this.cars = data.data || [];
+        this.totalItems = this.cars.length;
+        this.currentPage = 1; // сбрасываем на первую страницу
       } catch (error) {
         console.error("Ошибка при получении данных:", error);
       }
