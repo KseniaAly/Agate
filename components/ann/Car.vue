@@ -91,6 +91,9 @@ export default {
 
 <template>
   <section class="car">
+    <div class="text" v-if="this.cars.length===0">
+      <h3>В данный момент таких товаров для заказа нет</h3>
+    </div>
     <div class="container">
       <card-car
           v-for="(car, index) in displayedItems"
@@ -216,5 +219,34 @@ img {
   border: none;
   font-size: 1rem;
   font-weight: 600;
+}
+
+.text{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 823.5px;
+}
+.text h3{
+  font-size: 24px;
+  color: #880003;
+}
+
+@media (max-width: 780px) {
+  .text{
+    width: 410px;
+    text-align: center;
+    height: 400px;
+  }
+  .text h3{
+    font-size: 18px;
+  }
+}
+@media (max-width: 480px) {
+  .text{
+    width: 380px;
+    text-align: center;
+    height: 300px;
+  }
 }
 </style>
