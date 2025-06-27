@@ -69,8 +69,44 @@ function none() {
   const mkpp = document.querySelector('#mkpp')
   akpp.checked = false;
   mkpp.checked = false;
+  const petrol = document.querySelector('#petrol')
+  const diesel = document.querySelector('#diesel')
+  const gas = document.querySelector('#gas')
+  petrol.checked = false;
+  diesel.checked = false;
+  gas.checked = false;
 }
 
+function filter_engineType() {
+  const petrol = document.querySelector('#petrol')?.checked
+  const diesel = document.querySelector('#diesel')?.checked
+  const gas = document.querySelector('#gas')?.checked
+
+  if (petrol) {
+    link.value = link.value+'&property_engine_type=Бензиновый'
+  } else if(!petrol){
+    link.value = link.value.replace('property_engine_type=Бензиновый', '')
+  }
+  if (diesel) {
+    link.value = link.value+'&property_engine_type=Дизельный'
+  } else if(!diesel){
+    link.value = link.value.replace('&property_engine_type=Дизельный', '')
+  }
+  if (gas) {
+    link.value = link.value+'&property_engine_type=Газовый'
+  } else if(!gas){
+    link.value = link.value.replace('&property_engine_type=Газовый', '')
+  }
+  if (petrol && gas){
+    link.value = link.value+'&property_engine_type=Бензиновый/Газовый'
+  } else {
+    link.value = link.value.replace('&property_engine_type=Бензиновый/Газовый', '')
+  }
+
+  emit('update', link.value)
+}
+
+//Для раскрытия
 function press(element){
   let buttons = document.querySelectorAll(".btn")
   for (let button of buttons){
@@ -198,15 +234,15 @@ function click_second(element){
         <h5>Тип двигателя</h5>
         <div class="check">
           <div class="input">
-            <input type="checkbox" id="petrol">
+            <input type="checkbox" id="petrol" @change="filter_engineType">
             <label for="petrol">Бензиновый</label>
           </div>
           <div class="input">
-            <input type="checkbox" id="diesel">
+            <input type="checkbox" id="diesel" @change="filter_engineType">
             <label for="diesel">Дизельный</label>
           </div>
           <div class="input">
-            <input type="checkbox" id="gas">
+            <input type="checkbox" id="gas" @change="filter_engineType">
             <label for="gas">Газовый</label>
           </div>
         </div>
