@@ -23,6 +23,11 @@ const setActiveItem = (item) => {
 const toggleMobileMenu = () => {
   isMobileMenuOpen.value = !isMobileMenuOpen.value;
 }
+
+const emit = defineEmits(['search'])
+function searchInput(){
+  emit('search', searchQuery.value);
+}
 </script>
 
 <template>
@@ -43,7 +48,7 @@ const toggleMobileMenu = () => {
           </div>
         </div>
         <div class="search">
-          <input
+          <input @input="searchInput"
               v-model="searchQuery"
               type="text"
               placeholder="Поиск по сайту"

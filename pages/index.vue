@@ -3,6 +3,7 @@ import FilterComponent from "~/components/ksy/FilterComponent.vue";
 import FilterBrand from "~/components/ksy/FilterBrand.vue";
 import Car from "~/components/ann/Car.vue";
 import FeedBack from "~/components/mp/FeedBack.vue";
+import HeaderUp from "~/components/mp/HeaderUp.vue";
 
 import {ref} from "vue";
 
@@ -16,9 +17,15 @@ function updateLink(newLink) {
   link.value = newLink;
   console.log(newLink)
 }
+
+let searchValue = ref('')
+function search(newValue){
+  searchValue.value = newValue;
+}
 </script>
 
 <template>
+  <header-up @search="search"/>
   <div class="page">
     <a class="catalog">Каталог коммерческой техники в Нижнем Новгороде</a>
     <filter-brand class="right"/>
@@ -29,7 +36,7 @@ function updateLink(newLink) {
     <button @click="wes">Изменить вес</button>
     <div class="block">
       <filter-component class="filter" :class="{ active: click }" @update="updateLink" />
-      <car :link-new="link" />
+      <car :link-new="link" :search-value="searchValue"/>
       <filter-brand class="left" @update="updateLink"/>
     </div>
   </div>

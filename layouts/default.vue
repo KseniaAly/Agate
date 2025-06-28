@@ -1,10 +1,8 @@
 <script setup>
-import HeaderUp from "~/components/mp/HeaderUp.vue";
 import FooterUp from "~/components/mp/FooterUp.vue";
 </script>
 
 <template>
-  <header-up/>
   <nuxt-page></nuxt-page>
   <footer-up/>
 </template>

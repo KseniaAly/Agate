@@ -13,6 +13,10 @@ export default {
     linkNew: {
       type: String,
       required: true
+    },
+    searchValue:{
+      type: String,
+      required: true
     }
   },
   data() {
@@ -34,7 +38,7 @@ export default {
     displayedItems() {
       const start = (this.currentPage - 1) * this.itemsPerPage;
       const end = start + this.itemsPerPage;
-      return this.cars.slice(start, end);
+      return this.search.slice(start, end);
     },
     displayedPageNumbers() {
       const maxVisiblePages = 10;
@@ -42,6 +46,9 @@ export default {
       const endPage = Math.min(startPage + maxVisiblePages - 1, this.totalPages);
 
       return Array.from({ length: endPage - startPage + 1 }, (_, i) => startPage + i);
+    },
+    search(){
+      return this.cars.filter(car=>car.name.toLowerCase().includes(this.searchValue.toLowerCase()))
     }
   },
   methods: {
@@ -106,7 +113,7 @@ export default {
 
 <template>
   <section class="car">
-    <div class="text" v-if="this.cars.length===0">
+    <div class="text" v-if="this.displayedItems.length===0">
       <h3>В данный момент таких товаров для заказа нет</h3>
     </div>
     <div class="container">
