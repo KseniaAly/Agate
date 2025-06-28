@@ -75,6 +75,12 @@ function none() {
   petrol.checked = false;
   diesel.checked = false;
   gas.checked = false;
+  let buttons = document.querySelectorAll(".type-car3")
+  for (let button of buttons){
+    if(button.classList.contains('activeButton')){
+      button.classList.remove('activeButton')
+    }
+  }
 }
 
 function filter_engineType() {
